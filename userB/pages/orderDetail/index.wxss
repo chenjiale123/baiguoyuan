@@ -1,0 +1,39 @@
+.hidden{display: none;}
+page{min-height: 100%;}
+.container{background:rgb(245,245,245);height: auto;min-height: 100%;}
+.item-goods.container{background: rgb(245,245,245);height: auto;min-height: 100%;}
+.detail-box{flex:1;width: 100%;}
+.item-store{display: flex;padding:20rpx 40rpx;border-bottom: 1rpx solid rgb(242,242,242);background:#FFF;margin-bottom: 24rpx;}
+.img-middle{display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.icon-bill{width: 24rpx;height: 24rpx;margin-right: 16rpx;}
+.s-name{flex:1;font-size: 28rpx;color: rgb(53,53,53)}
+.s-time{font-size: 28rpx;color: rgb(51,51,51)}
+.item-goods-box{margin-bottom: 24rpx;}
+.item-goods{display:flex;padding:32rpx 24rpx;font-size: 34rpx;color: rgb(51,51,51);border-bottom: 1rpx solid rgb(242,242,242);background: #FFF;font-weight: 600;}
+.g-name{flex:1;}
+
+.info-box{background: #FFF;}
+.t-box{padding:24rpx;border-bottom: 1rpx solid rgb(242,242,242)}
+.f-b{display: flex;justify-content: space-between;font-size: 28rpx;color: rgb(51,51,51);padding:8rpx 0;}
+.d-box{padding:24rpx;text-align: right;}
+.total{display: flex;justify-content: flex-end;font-size: 28rpx;color: rgb(51,51,51);align-items: center;}
+.price{font-size: 34rpx;color: rgb(248,138,11);font-weight: 600;}
+.d-time{font-size: 24rpx;color: rgb(102,102,102);margin-top: 22rpx;}
+
+.item-address{padding:24rpx;font-size: 30rpx;color: rgb(51,51,51);margin-bottom: 22rpx;}
+.a-info{font-weight: 600;}
+.addr{margin-top: 8rpx;}
+.mr{margin-right: 24rpx;}
+.icon-colorline{width: 100%;height: 4rpx;}
+/* .item-goods-box{margin-top: 22rpx;} */
+.img-middle{display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.icon-fruit{width: 160rpx;height: 160rpx;}
+.g-info{margin-left: 24rpx;flex:1;flex-direction:column;justify-content:space-between;display: flex;}
+.g-h1{font-size: 32rpx;color: rgb(51,51,51)}
+.g-p{font-size: 24rpx;color: rgb(153,153,153);margin-top: 8rpx;}
+.g-down{display: flex;justify-content:space-between}
+.g-price{font-size: 34rpx;color: rgb(51,51,51)}
+
+.pagoda{text-align: center;margin: 30rpx 0 10rpx;}
+.icon-pagoda{width: 104rpx;height: 54rpx;}
+.f-p{font-size: 24rpx;color: rgb(207,207,207);margin-top: 4rpx;}

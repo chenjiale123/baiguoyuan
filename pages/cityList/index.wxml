@@ -1,0 +1,11 @@
+<view class="container">
+    <label class='list-title'>
+        <image class='icon-location' src='/source/images/home_icon_change.png'></image>
+        <text>已开通服务的城市</text>
+    </label>
+
+    <view class="city-list">
+        <view class="item mlrtb" hover-class="none" wx:for="{{cityList}}" wx:key="{{item.cityId}}" data-id="{{item.cityId}}" data-name="{{item.cityName}}"
+            bindtap="bindCityTap">{{item.cityName}}</view>
+    </view>
+</view>

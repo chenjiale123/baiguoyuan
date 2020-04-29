@@ -1,0 +1,98 @@
+{
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "pages": [
+    "pages/fightGroups/index",
+    "pages/index/index",
+    "pages/confirmOrder/index",
+    
+  
+    "pages/login/index",
+    "pages/noSignal/index",
+    "pages/noLocation/index",
+    "pages/storeMap/index",
+    "pages/cityList/index",
+    "pages/search/index",
+    "pages/storeList/index",
+    "pages/components/recommand/index"
+  ],
+  "subPackages": [
+    {
+      "root": "fightGroups",
+      "pages": [
+        "pages/paySuccess/index",
+        "pages/inviteFriends/index",
+        "pages/PTorderDetail/index",
+        "pages/myAllOrder/index",
+        "pages/selfExtractStore/index",
+        "pages/goodsDetail/index"
+      ]
+    },
+    {
+      "root": "userA",
+      "pages": [
+        "pages/coupon/index",
+        "pages/deposit/index",
+        "pages/myPrivlg/index",
+        "pages/baldetail/index",
+        "pages/berryValue/index",
+        "pages/integrationDetail/index",
+        "pages/privlgDetail/index"
+      ]
+    },
+    {
+      "root": "userB",
+      "pages": [
+        "pages/receiveHB/index",
+        "pages/barcode/index",
+        "pages/modifyPwd/index",
+        "pages/changeCard/index",
+        "pages/orderDetail/index",
+        "pages/payRecord/index",
+        "pages/modifyUserInfo/index",
+        "pages/selfService/index",
+        "pages/memberCode/index"
+      ]
+    },
+    {
+      "root": "h5",
+      "pages": [
+        "pages/download/index",
+        "pages/memberRuleInfo/index",
+        "pages/intergraRuleInfo/index",
+        "pages/berryRuleInfo/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#3AD964",
+    "navigationBarTitleText": "00",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7f8389",
+    "selectedColor": "#37D260",
+    "list": [
+      {
+        "pagePath": "pages/fightGroups/index",
+        "text": "拼团",
+        "iconPath": "source/images/icon_tuangou.png",
+        "selectedIconPath": "source/images/icon_tuangou_sel.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "会员",
+        "iconPath": "source/images/icon_pc.png",
+        "selectedIconPath": "source/images/icon_pc_sel.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 120000
+  },
+  "sitemapLocation": "sitemap.json"
+}

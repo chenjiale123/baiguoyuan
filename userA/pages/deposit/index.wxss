@@ -1,0 +1,172 @@
+.container {
+  width: 100%;
+  padding-bottom: 98rpx;
+}
+
+.balance {
+  width: 100%;
+  height: 352rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-bottom: 4rpx;
+}
+
+.balanceImage {
+  z-index: -1;
+  width: 100%;
+  height: 352rpx;
+}
+
+.balance-content {
+  font-size: 80rpx;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  margin-top: -80rpx;
+}
+
+.balanceDetail {
+  font-size: 24rpx;
+  margin-top: 5rpx;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.tip2 {
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.balanceInfoImage {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}
+
+.yen {
+  font-size: 54rpx;
+  margin-right: 10rpx;
+}
+
+.deposite {
+  width: 100%;
+  padding: 0 30rpx;
+}
+
+.deposite-phone {
+  width: 100%;
+  font-size: 28rpx;
+  color: #878787;
+  margin-top: 4rpx;
+  padding-left: 29rpx;
+}
+
+.deposite-input {
+  margin-top: 32rpx;
+  margin-bottom: 16rpx;
+  height: 90rpx;
+  /*border: 1px solid rgba(1, XXX, XXX, 0.5) ;*/
+  border-radius: 5px;
+  font-size: 28rpx;
+  padding-left: 30rpx;
+  background-color: #f2f2f2;
+  color: #999;
+}
+
+.p-input {
+  color: #999;
+  line-height: 90rpx;
+}
+
+.deposite-statement {
+  color: #f78a0a;
+  font-size: 28rpx;
+}
+
+/*优惠券列表*/
+
+.ouponActivityList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /*padding: 0 30rpx;*/
+}
+
+.ouponActivity {
+  width: 214rpx;
+  height: 134rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+  border: 1px solid rgb(220, 220, 220);
+  color: rgb(51, 51, 51);
+  border-radius: 5px;
+  margin-left: 29rpx;
+}
+
+.ouponActivity .amount {
+  font-size: 36rpx;
+}
+
+.ouponActivity .activity-content {
+  font-size: 28rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.btn-submit {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #37D260 !important;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 96rpx;
+  border: 1rpx solid #39d963;
+  background: #39d963;
+  color: #fff;
+}
+
+.btn-off {
+  background: #999 !important;
+  border: 1rpx solid #999;
+}
+
+.activity {
+  background-color: rgb(255, 255, 255) !important;
+  color: #39d963;
+  border-color: #39d963;
+}
+
+.apply {
+  display: block;
+}
+
+.apply-receipt {
+  position: absolute;
+  left: 29rpx;
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  display: block;
+  margin-top: 16rpx;
+}
+
+.prevent-screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000;
+  background-color: rgba(0, 0, 0, 0);
+}

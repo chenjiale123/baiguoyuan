@@ -1,0 +1,89 @@
+<!--fightGroups/pages/weChatTuxedo/index.wxml-->
+<import src="/pages/template/index.wxml" />
+
+<view class='allPage' wx:if='{{isReady}}'>
+  <view class='top'>
+    <view class='top-tip1'>
+      <view class='countT' wx:if='{{!isOver && !isFull}}'>{{layh}}:{{laym}}:{{lays}}后结束</view>
+      <!--未成团-a -->
+       <!-- <view wx:if='{{isOver}}'>果果已下架</view>  -->
+      <!--该商品已下架-b -->
+      <view wx:if='{{isOver}}'>此团已结束</view>
+      <!-- 团已满 -->
+      <view wx:if='{{isFull}}'>团已满</view>
+    </view>
+    <view class='top-tip2' wx:if='{{!isOver && !isFull}}'>{{obj.groupSize}}人团，仅剩
+      <label class='f1'>{{obj.diff}}</label>个名额</view>
+    <!--未成团-a -->
+
+  </view>
+  <!-- 商品信息 -->
+  <view bindtap='navigateGoodsDetail' style='display:flex;justify-content:center;width:100%;border-bottom: 1px solid rgb(245,245,245)'>
+    <template is="msgItem" data="{{obj}}" />
+  </view>
+  <!-- 提示 -->
+  <template is="tips-line" data='{{picChange}}'/>
+  <view class="middle {{!isOver && !isFull ? '' : mb}}" style='border-top: 1px solid rgb(245,245,245)'>
+
+    <!--未成团-a -->
+    <view class='join-member' wx:if='{{!isOver}}'>
+      <view class='user-info'>
+        <view class='user-img' style="background-image:url('{{bg_pintuan}}');" wx:for="{{groupMemberList}}" wx:for-item="item" wx:for-index="index" wx:key='ikey' wx:if='{{index <5}}'>
+          <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{index == 0}}"></image>
+          <view class='team-label' wx:if="{{index == 0}}">团长</view>
+
+          <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{item.wxProfileUrl && index != 0}}"></image>
+          <image class='user-img3' src='' wx:if="{{!item.wxProfileUrl}}"></image>
+        </view>
+      </view>
+    </view>
+
+  <view bindtap='backHomeBtn' >
+    <image src='/source/images/icon_float_backhome.png' class='backHome-img'></image>
+  </view>
+
+    <view class='btn-and-tips'>
+      <!-- btn -->
+      <!-- 活动结束或商品已下架 -->
+      <view class='btn' bindtap='naviagteFightGroup' wx:if="{{isOver}}">去看看其他拼团</view>
+      <!--拼团已满 -->
+      <view class='btn' wx:if='{{isFull}}' bindtap='naviagteFightGroup'>我来开这个团</view>
+      <!-- 团未满  -->
+      <view class='btn' wx:if='{{!isOver && !isFull}}' bindtap='navigatePT'>一键参团</view>
+
+      <!-- tips -->
+      <view class='middle-tip' bindtap='showTips'>
+        <image class='middle-img' src='/source/images/icon_qmark.png'></image>拼团玩法: 好友参团·人满到店提货·人不满退款</view>
+    </view>
+  </view>
+  <!--爆款推荐  -->
+  <recommand obj="{{goodsList}}" bind:event='naviagteGoodsDetail' style='width:100%;' bindtap=' ' wx:if="{{isRecommend}}" > </recommand>
+
+  <!-- Tips -->
+  <view wx:if="{{tipsShow}}" class='tips-template' catchtap='hideTips'>
+  </view>
+  <view class='tipsAll' wx:if="{{tipsShow}}" animation="{{animationData}}">
+    <view class='pintuan-info'>
+      <view class='pintuaninfo-top'>
+        <view class='pintuan-line'></view>
+        如何拼团
+        <view class='pintuan-line'></view>
+      </view>
+      <view class='pintuaninfo-middle'>
+        <view class='f2'>
+          <image class='pintuaninfo-img' src='/source/images/icon_flow_1_small.png'></image>开团或参加别人的团</view>
+        <view class='f2'>
+          <image class='pintuaninfo-img' src='/source/images/icon_flow_2_small.png'></image>在规定的时间，邀请好友参团</view>
+        <view class='f2'>
+          <image class='pintuaninfo-img' src='/source/images/icon_flow_3_small.png'></image>达到拼团人数，到门店提货 </view>
+        <view class='f2'>
+          <image class='pintuaninfo-img' src='/source/images/icon_flow_4_small.png'></image>未达到拼团人数，自动退款按原路返回</view>
+      </view>
+
+    </view>
+    <view class='tips-btn' bindtap='hideTips'>我知道了</view>
+  </view>
+</view>
+
+<!-- 蒙层 -->
+<template is="mask" data='{{prevent}}' />

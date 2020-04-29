@@ -1,0 +1,22 @@
+.container{padding:40rpx 30rpx;}
+.t-box{display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.icon-changecard{width:96rpx;height:96rpx;}
+.p-t{font-size:28rpx;margin: 21rpx 0 10rpx;color: rgb(102,102,102)}
+.phone{font-size: 40rpx;color: rgb(38,38,38);font-weight: 600;}
+
+.pwd-box{width:90%;padding:84rpx 0;}
+.img-middle{display: flex;flex-direction: column;justify-content: center;align-items:center;}
+.icon-phone,.icon-lock{width:44rpx;height:44rpx;}
+.pwd-item{display:flex;align-items:center;margin-bottom: 30rpx;border-bottom:1rpx solid rgb(229, 229, 229);}
+.mt{margin-top: 40rpx;}
+.pwd{font-size:28rpx;padding: 8rpx 20rpx;flex:1;line-height:69rpx;min-height: auto;}
+.vcode{color:rgb(153,153,153);font-size: 28rpx;}
+.active{color:#37D260;}
+.warn{color: rgb(255,74,50);font-size: 26rpx;}
+
+.pwd-btn{width: 100%;border:1rpx solid rgb(229, 229, 229);padding:22rpx;text-align: center;font-size: 36rpx;background: rgb(204,204,204);border-radius: 10rpx;color: #FFF;}
+.on{background:#37D260}
+
+.des-box{margin-top: 65rpx;}
+.d-t{font-size: 26rpx;color: rgb(83,83,83);margin-bottom: 8rpx;}
+.f-p{font-size: 24rpx;color: rgb(153,153,153);padding:8rpx 0;}

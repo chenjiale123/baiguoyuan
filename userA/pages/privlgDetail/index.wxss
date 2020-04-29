@@ -1,0 +1,14 @@
+.hidden{display: none!important;}
+.container{padding:0 40rpx;}
+.c-t{margin:54rpx auto;width:100%;text-align: center;}
+.icon-img{width:88rpx;height: 88rpx;}
+.icon-txt{font-size: 32rpx;color: rgb(51,51,51);margin-top: 16rpx;font-weight: 600}
+
+.c-m{flex:1;width: 100%;}
+.c-m-t{display: flex;align-items: center;}
+.line{width: 5rpx;height: 30rpx;background: rgb(195,151,94)}
+.tit{font-size: 32rpx;color: rgb(195,151,94);margin-left: 15rpx;}
+.c-m-c{margin-top:8rpx;font-size: 28rpx;color: rgb(51,51,51)}
+
+.c-b{width: 700rpx;height: 100rpx;border-radius: 100rpx;background: rgb(224,190,125);margin-bottom: 24rpx;text-align: center;line-height: 100rpx;color: #FFF;font-size: 40rpx;}
+.off{background: rgb(192,192,192)}

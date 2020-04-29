@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="t-box">
+    <image class="icon-changecard" src="/source/images/icon_resetpassword_big.png"></image>
+    <view class="p-t">当前会员账号</view>
+    <view class="phone">{{phoneNumText}}</view>
+  </view>
+ 
+
+  <view class="pwd-box">
+    <view class="pwd-item">
+      <label class="img-middle"><image class="icon-phone" src="/source/images/login_icon_lock.png"></image></label>
+        <input class="pwd" type="number" placeholder="新密码(6位数字)" maxlength="6" bindinput="bindNewPwdTap" focus="{{pwdFocus}}" password="{{newPwdShowFlag}}"/>
+      <label class="img-mid">
+        <image class="icon-visibile" bindtap="newPwdShowNo" src="/source/images/icon_visibility_{{newPwdShowFlag?'off':'on'}}.png"></image>
+      </label>
+    </view>
+    <view class="pwd-item mt">
+      <label class="img-middle"><image class="icon-lock" src="/source/images/login_icon_lockclear.png"></image></label>
+      <input class="pwd" type="number" placeholder="确认密码" maxlength="6" bindinput="bindAgainPwdTap" focus="{{againPwdFocus}}" password="{{againPwdShowFlag}}"/>
+      <label class="img-middle">
+        <image class="icon-visibile" bindtap="againPwdShowNo" src="/source/images/icon_visibility_{{againPwdShowFlag?'off':'on'}}.png"></image>
+      </label>
+    </view>
+    <!--<view class="warn">*当前账号状态异常，请联系客服 400-181-1212</view>-->
+  </view>
+
+  <view class="{{pwdBtnDisabled ? 'pwd-btn' : 'pwd-btn on'}}" data-pwd-btn-disabled="{{pwdBtnDisabled}}" bindtap="bindPwdBtnTap">重置</view>
+</view>

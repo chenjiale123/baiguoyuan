@@ -1,0 +1,367 @@
+<view class="container">
+  <view class="c-t" style="background-image:url({{currentLevelId == 1 ? privlg_bg1 : currentLevelId == 2 ? privlg_bg2 : currentLevelId == 3 ? privlg_bg3 : privlg_bg4 }})">
+    <view class="t-up">
+      <view class="up-l">
+        <view class="f-h1">{{currentLevelName}}</view>
+        <!-- <view class="u-box">
+          <view class="jifen">当前等级</view>
+          <view class="{{currentLevelId == 4 ? 'expires hidden' : 'expires'}}">再获取{{upgradeLevelNum}}点果粒值升级为{{currentLevelId == 1 ? '银卡' : currentLevelId == 2 ? '金卡' : '钻石'}}会员</view>
+        </view> -->
+      </view>
+      <view  class="up-r" hover-class="none" bindtap="navigateInfo">查看规则</view>
+    </view>
+    <!--普通卡积分 -->
+    <view class="{{currentLevelId == 1 ? 't-down' : 't-down hidden'}}">
+      <view class="line-box">
+        <view class="line" style="background-image:url({{line_bg}})"><text class="br-t">0</text></view> 
+        <view class="{{rate<=50? 'r-u r-trans' : 'r-u l-trans'}}" style="right:{{per}};background-image:url({{rate<= 50 ? jf_bg1 : jf_bg0}})" bindtap="toMemberLevel">{{currentGetIntegral}}<image class='icon-right' src='/source/images/icon_btn_next_green.png'></image></view> 
+        <view style="width:{{per}}" class="baseline"><text class="bl-t">{{totalLevelNum}}</text></view>
+        <image style="right:{{per}}" class="j-dot" src="/source/images/icon_yuandian.png"></image>
+      </view>
+    </view>
+    <!-- 银卡积分 -->
+    <view class="{{currentLevelId == 2 ? 't-down' : 't-down hidden'}}">
+      <view class="line-box line-silver">
+        <view class="line" style="background-image:url({{line_bg}})"><text class="br-t">0</text></view> 
+        <view bindtap="toMemberLevel" class="{{rate<=50 ? 'r-u m-c r-trans' : 'r-u m-c l-trans'}}" style="right:{{per}};background-image:url({{rate<= 50 ? jf_bg1 : jf_bg0}})">{{currentGetIntegral}}<image class='icon-right' src='/source/images/icon_btn_next_gray.png'></image></view> 
+        <view style="width:{{per}}" class="baseline bg-silver"><text class="bl-t">{{totalLevelNum}}</text></view>
+        <image style="right:{{per}}" class="j-dot" src="/source/images/icon_yuandian.png"></image>
+      </view>
+    </view> 
+    <!-- 金卡积分 -->
+    <view class="{{currentLevelId == 3 ? 't-down' : 't-down hidden'}}">
+      <view class="line-box line-gold">
+        <view class="line" style="background-image:url({{line_bg}})"><text class="br-t">0</text></view> 
+        <view bindtap="toMemberLevel" class="{{rate<=50 ? 'r-u g-c r-trans' : 'r-u g-c l-trans'}}" style="right:{{per}};background-image:url({{rate<= 50 ? jf_bg1 : jf_bg0}})">{{currentGetIntegral}}<image class='icon-right' src='/source/images/icon_btn_next_gold.png'></image></view> 
+        <view style="width:{{per}}" class="baseline bg-gold"><text class="bl-t">{{totalLevelNum}}</text></view>
+        <image style="right:{{per}}" class="j-dot" src="/source/images/icon_yuandian.png"></image>
+      </view>
+    </view>
+    <!--钻石积分  -->
+    <view class="{{currentLevelId == 4 ? 't-down' : 't-down hidden'}}">
+      <view class="line-box line-dem">
+        <view class="line" style="background-image:url({{line_bg}})"><text class="br-t">0</text></view> 
+        <view bindtap="toMemberLevel" class="{{rate <= 50 ? 'r-u d-c r-trans' : 'r-u d-c l-trans'}}" style="right:{{per}};background-image:url({{rate<= 50 ? jf_bg1 : jf_bg0}})">{{currentGetIntegral}}<image class='icon-right' src='/source/images/icon_btn_next_black.png'></image></view> 
+        <view style="width:{{per}}" class="baseline bg-dem"><text class="bl-t">∞</text></view>
+        <image style="right:{{per}}" class="j-dot" src="/source/images/icon_yuandian.png"></image>
+      </view>
+    </view>
+     <view class="u-box">
+          <!-- <view class="jifen">当前等级</view> -->
+          <view class="{{currentLevelId == 4 ? 'expires hidden' : 'expires'}}">再获取{{upgradeLevelNum}}点果粒值升级为{{currentLevelId == 1 ? '银卡' : currentLevelId == 2 ? '金卡' : '钻石'}}会员</view>
+        </view> 
+  </view>
+
+  <!-- 普通特权 -->
+  <view class="c-b">
+    <view class="b-t">
+      <view class="b-t-dot"></view>
+      <view class="b-t-line"></view>
+      <view class="f-h2">会员特权</view>
+      <view class="b-t-line"></view>
+      <view class="b-t-dot"></view>
+    </view>
+    <view class='nav-box'>
+      <view class="{{tapLevelId == 1 ? 'item-nav-box active-on' : 'item-nav-box active-off'}}" data-id="1" bindtap='bindLevelTap'>
+        <view class="{{currentLevelId == 1 ? 'item-nav selected' : 'item-nav on'}}">
+          <view class='w-line'></view>
+          <image class='icon-lev' src='/source/images/btn_v1.png'></image>
+          <view class='line'></view>
+        </view>
+        <view class='lev-name'>普卡会员</view>
+      </view>
+      
+      <view class="{{tapLevelId == 2 ? 'item-nav-box active-on' : 'item-nav-box active-off'}}" data-id="2" bindtap='bindLevelTap'>
+        <view class="{{currentLevelId == 2 ? 'item-nav selected' :  currentLevelId < 2 ? 'item-nav' : 'item-nav on'}}">
+          <view class='line'></view>
+          <image class='icon-lev' src="{{currentLevelId >= 2 ? '/source/images/btn_v2.png' : '/source/images/btn_v2_gray.png'}}"></image>
+          <view class='line'></view>
+        </view>
+        <view class='lev-name'>银卡会员</view>
+      </view>
+      <view class="{{tapLevelId == 3 ? 'item-nav-box active-on' : 'item-nav-box active-off'}}" data-id="3" bindtap='bindLevelTap'>
+        <view class="{{currentLevelId == 3 ? 'item-nav selected' :  currentLevelId < 3 ? 'item-nav' : 'item-nav on'}}">
+          <view class='line'></view>
+          <image class='icon-lev' src="{{currentLevelId >= 3 ? '/source/images/btn_v3.png' : '/source/images/btn_v3_gray.png'}}"></image>
+          <view class='line'></view>
+        </view>
+        <view class='lev-name'>金卡会员</view>
+      </view>
+      <view class="{{tapLevelId == 4 ? 'item-nav-box active-on' : 'item-nav-box active-off'}}" data-id="4" bindtap='bindLevelTap'>
+        <view class="{{currentLevelId == 4 ? 'item-nav selected' :  currentLevelId < 4 ? 'item-nav' : 'item-nav on'}}">
+          <view class='line'></view>
+          <image class='icon-lev' src="{{currentLevelId >= 4 ? '/source/images/btn_v4.png' : '/source/images/btn_v4_gray.png'}}"></image>
+          <view class='w-line'></view>
+        </view>
+        <view class='lev-name'>钻石会员</view>
+      </view>
+    </view>
+    <!-- 普卡 -->
+    <view class="{{tapLevelId == 1 ? 'b-pg-box b-normal' : 'b-pg-box b-normal hidden'}}">
+      <image class='arrow-up' src='/source/images/bg_triangle.png'></image>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="0" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+        <view class='b-item' data-legal="1" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-tuikuan.png'></image>
+          </view>
+          <view class='icon-txt'>App瞬间退款</view>
+        </view>
+        <view class='b-item' data-legal="2" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-jifen.png'></image>
+          </view>
+          <view class='icon-txt'>积分商城专区</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item'>
+          <view class='item-image' data-legal="5" bindtap='toPrivlgDePage'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId && currentLevelId == 2 ? '/source/images/icon-birthday_gray.png' : '/source/images/icon-birthday.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId && currentLevelId == 2 ? 'icon-corn gray' :'icon-corn'}}">9折</view>
+          </view>
+          <view class='icon-txt'>生日特权</view>
+        </view>
+        <view class='b-item h-none'>
+          <view class='item-image' data-legal="0" bindtap='toPrivlgDePage'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+        <view class='b-item h-none'>
+          <view class='item-image' data-legal="0" bindtap='toPrivlgDePage'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item h-none'>
+          <view class='item-image' data-legal="0" bindtap='toPrivlgDePage'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+      </view>
+    </view>
+    <!-- 银卡 -->
+    <view class="{{tapLevelId == 2 ? 'b-pg-box b-silver' : 'b-pg-box b-silver hidden'}}">
+      <image class='arrow-up' src='/source/images/bg_triangle.png'></image>
+      <view class='b-item-box'>
+        <view class='b-item'>
+          <view class='item-image' data-legal="0" bindtap='toPrivlgDePage'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+        <view class='b-item' data-legal="1" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-tuikuan.png'></image>
+            
+          </view>
+          <view class='icon-txt'>App瞬间退款</view>
+        </view>
+        <view class='b-item' data-legal="2" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-jifen_gray.png' : '/source/images/icon-jifen.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">银</view>
+          </view>
+          <view class='icon-txt'>积分商城专区</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item'>
+          <view class='item-image' data-legal="3" bindtap='toPrivlgDePage'>
+            <image class='icon-img' 
+                src="{{currentLevelId == 1 ? '/source/images/icon-chongzhi_gray.png':'/source/images/icon-chongzhi.png'}}"></image>
+          </view>
+          <view class='icon-txt'>充值返现</view>
+        </view>
+        <view class='b-item'>
+          <view class='item-image' data-legal="4" bindtap='toPrivlgDePage'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-coupon_gray.png' : '/source/images/icon-coupon.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">9折</view>
+          </view>
+          <view class='icon-txt'>升级券包</view>
+        </view>
+        <view class='b-item'>
+          <view class='item-image' data-legal="5" bindtap='toPrivlgDePage'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId && currentLevelId != 1 ? '/source/images/icon-birthday_gray.png' : '/source/images/icon-birthday.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId && currentLevelId != 1 ? 'icon-corn gray' :'icon-corn'}}">9折</view>
+          </view>
+          <view class='icon-txt'>生日特权</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="6" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src="{{tapLevelId > currentLevelId ? '/source/images/icon-sale_gray.png':'/source/images/icon-sale.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">银</view>
+          </view>
+          <view class='icon-txt'>专享活动/月</view>
+        </view>
+        <view class='b-item'>
+          <view class='item-image' data-legal="7" bindtap='toPrivlgDePage'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-gift_gray.png' : '/source/images/icon-gift.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">银</view>
+          </view>
+          <view class='icon-txt'>专享券包/月</view>
+        </view>
+        <view class='b-item'></view>
+      </view>
+    </view>
+
+    <!-- 金卡 -->
+    <view class="{{tapLevelId == 3 ? 'b-pg-box b-gold' : 'b-pg-box b-gold hidden'}}">
+      <image class='arrow-up' src='/source/images/bg_triangle.png'></image>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="0" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+        <view class='b-item' data-legal="1" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-tuikuan.png'></image>
+            
+          </view>
+          <view class='icon-txt'>App瞬间退款</view>
+        </view>
+        <view class='b-item' data-legal="2" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-jifen_gray.png' : '/source/images/icon-jifen.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">金</view>
+          </view>
+          <view class='icon-txt'>积分商城专区</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="3" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{currentLevelId == 1 ? '/source/images/icon-chongzhi_gray.png':'/source/images/icon-chongzhi.png'}}"></image>
+          </view>
+          <view class='icon-txt'>充值返现</view>
+        </view>
+        <view class='b-item' data-legal="4" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-coupon_gray.png' : '/source/images/icon-coupon.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">85折</view>
+          </view>
+          <view class='icon-txt'>升级券包</view>
+        </view>
+        <view class='b-item' data-legal="5" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src="{{tapLevelId > currentLevelId ? '/source/images/icon-birthday_gray.png' : '/source/images/icon-birthday.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">85折</view>
+          </view>
+          <view class='icon-txt'>生日特权</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="6" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src="{{tapLevelId > currentLevelId ? '/source/images/icon-sale_gray.png':'/source/images/icon-sale.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">金</view>
+          </view>
+          <view class='icon-txt'>专享活动/月</view>
+        </view>
+        <view class='b-item' data-legal="7" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-gift_gray.png' : '/source/images/icon-gift.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">金</view>
+          </view>
+          <view class='icon-txt'>专享券包/月</view>
+        </view>
+        <view class='b-item'></view>
+      </view>
+    </view>
+
+    <!-- 钻石 -->
+    <view class="{{tapLevelId == 4 ? 'b-pg-box b-demon' : 'b-pg-box b-demon hidden'}}">
+      <image class='arrow-up' src='/source/images/bg_triangle.png'></image>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="0" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-zhuanxiangjia.png'></image>
+          </view>
+          <view class='icon-txt'>会员专享价</view>
+        </view>
+        <view class='b-item' data-legal="1" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src='/source/images/icon-tuikuan.png'></image>
+            
+          </view>
+          <view class='icon-txt'>App瞬间退款</view>
+        </view>
+        <view class='b-item' data-legal="2" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-jifen_gray.png' : '/source/images/icon-jifen.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">钻石</view>
+          </view>
+          <view class='icon-txt'>积分商城专区</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="3" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{currentLevelId == 1 ? '/source/images/icon-chongzhi_gray.png':'/source/images/icon-chongzhi.png'}}"></image>
+          </view>
+          <view class='icon-txt'>充值返现</view>
+        </view>
+        <view class='b-item' data-legal="4" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-coupon_gray.png' : '/source/images/icon-coupon.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">8折</view>
+          </view>
+          <view class='icon-txt'>升级券包</view>
+        </view>
+        <view class='b-item' data-legal="5" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-birthday_gray.png' : '/source/images/icon-birthday.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">8折</view>
+          </view>
+          <view class='icon-txt'>生日特权</view>
+        </view>
+      </view>
+      <view class='b-item-box'>
+        <view class='b-item' data-legal="6" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' src="{{tapLevelId > currentLevelId ? '/source/images/icon-sale_gray.png':'/source/images/icon-sale.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">钻石</view>
+          </view>
+          <view class='icon-txt'>专享活动/月</view>
+        </view>
+        <view class='b-item' data-legal="7" bindtap='toPrivlgDePage'>
+          <view class='item-image'>
+            <image class='icon-img' 
+                src="{{tapLevelId > currentLevelId ? '/source/images/icon-gift_gray.png' : '/source/images/icon-gift.png'}}"></image>
+            <view class="{{tapLevelId > currentLevelId ? 'icon-corn gray' : 'icon-corn'}}">钻石</view>
+          </view>
+          <view class='icon-txt'>专享券包/月</view>
+        </view>
+        <view class='b-item'></view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

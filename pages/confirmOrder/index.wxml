@@ -1,0 +1,138 @@
+<scroll-view>  
+  <view class='shipping-address border-bottom'>
+    <view class='address-info' style='display:'>
+      <view class='info-title'><text>程夏花</text><text class='num'>13587654321</text></view>
+      <view class='info-main'>
+        <view class='main-left'><text>深圳市 南山区 A9音乐大厦 903深圳市南山区 A9音乐大厦 903</text></view>
+        <view class='main-right'><text class='info-text'>修改</text><image src='/source/images/icon_arrow.png' class='info-arrow right-arrow'></image></view>
+      </view>
+    </view>
+
+    <view class='select-address'>
+      <text class='sign'>+</text><text>点击选择收货地址</text>
+    </view>
+  </view>
+
+  <view class='coupon-text'>
+    <text>已默认为您选择最优优惠方式</text>
+  </view>
+
+  <view class='coupon'>
+    <image src='/source/images/icon_quan.png' class='img'></image>
+    <text class='txt'>无可使用优惠券</text>
+    <image src='/source/images/icon_arrow.png' class='arrow right-arrow'></image>
+  </view>
+
+  <view class='order-list'>
+
+    <view class='delivery-time order-page-border'>
+      <view><text>配送时间</text></view>
+      <picker mode="multiSelector" value="{{multiIndex}}" range="{{multiArray}}" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange">
+        <view class='time'>
+          <text class='delivery-text'>预计{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}</text>
+          <image src='/source/images/icon_arrow.png' class='delivery-arrow right-arrow'></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class='order-info' wx:for="{{2}}" wx:key="{{index}}">
+      <view class='float-left'><image class='order-img' src='/source/images/icon_portrait.png'></image></view>
+      <view class='float-left'>
+        <view><text>夏威夷夏威夷夏威夷</text></view>
+        <view class='item-title'><text>1份/约500g</text></view>
+        <view class='item-sub-title'><text>数量: x1</text></view>
+      </view>
+      <view class='item-right float-right'>
+        <view class='item-money'><text>¥128.5</text></view>
+      </view>
+    </view>
+
+    <view class='order-bill order-page-border'>
+      <view><text>发票抬头</text></view>
+      <view class='bill'>
+        <text class='bill-text'>不需要开发票</text>
+        <image src='/source/images/icon_arrow.png' class='bill-arrow right-arrow'></image>
+      </view>
+    </view>
+
+    <view class='order-comment'>
+      <view class='comment-text float-left'>备注留言:</view>
+      <input type='text' placeholder='请注明,是否需要清洗要求'></input>
+    </view>
+
+  </view>
+
+  <view class='forward-sale'>
+
+    <view class='forward-hander order-page-border'>
+      <text class='hander-txt'>预售</text>
+      <text>工作人员将在送货前与您确认送货时间</text>
+    </view>
+
+    <view class='order-info'>
+      <view class='float-left'><image class='order-img' src='/source/images/bg_code.jpg'></image></view>
+      <view class='float-left'>
+        <view><text>夏威夷夏威夷夏威夷</text></view>
+        <view class='item-title'><text>1份/约500g</text></view>
+        <view class='item-sub-title'><text>数量: x1</text></view>
+      </view>
+      <view class='item-right float-right'>
+        <view class='item-money'><text>¥128.5</text></view>
+      </view>
+    </view>
+
+    <view class='forward-bill order-page-border'>
+      <text>发票抬头</text>
+      <text class='forward-bill-description'>预售商品请到"百果园App/我/查看全部订单"页申请</text>
+    </view>
+
+    <view class='order-comment order-page-border'>
+      <view class='comment-text float-left'>备注留言:</view>
+      <input type='text' placeholder='请注明,是否需要清洗要求'></input>
+    </view>
+
+  </view>
+
+  <view class='sold-out'>
+
+    <view class='sold-out-hander order-page-border'>
+      <text>已售罄</text>
+      <text>今日已售罄，明儿请早～</text>
+    </view>
+
+    <view class='order-info' wx:for="{{2}}" wx:key="{{index}}">
+      <view class='float-left'><image class='order-img' src='/source/images/icon_portrait.png'></image></view>
+      <view class='float-left'>
+        <view><text>夏威夷夏威夷夏威夷</text></view>
+        <view class='item-title'><text>1份/约500g</text></view>
+        <view class='item-sub-title'><text>数量: x1</text></view>
+      </view>
+      <view class='item-right float-right'>
+        <view class='item-money'><text>¥128.5</text></view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class='consumer-details'>
+    <view class='details-item'><text>商品金额</text><text>¥100.10</text></view>
+    <view class='details-item'><text>运费</text><text>+¥10.10</text></view>
+    <view class='details-item'><text>优惠券</text><text>-¥10.10</text></view>
+    <view class='details-item' style='margin-bottom:0;'><text>立减</text><text>-¥20.10</text></view>
+  </view>
+
+
+  <view class='flex-footer'>
+    <view class='footer-info'>
+      <text>配送上门: </text>
+      <text>深圳市 南山区 A9音乐大厦 903深圳市南山区 A9音乐大厦 903</text>
+    </view>
+
+    <view class='footer-confirm'>
+      <view class='total'><text class='one'>合计 : </text><text class='two'>¥100<text class='three'>.00</text></text></view>
+      <view class='confirm-buttom'><text>确认</text></view>
+    </view>
+  </view>
+
+</scroll-view>

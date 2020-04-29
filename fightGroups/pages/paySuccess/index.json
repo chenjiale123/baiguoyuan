@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "recommand": "../../../pages/components/recommand/index"
+  }
+}

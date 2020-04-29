@@ -1,0 +1,6 @@
+<view class="container" style="background-image:url('{{bg}}');">
+  <view class="inp-box">
+    <input class="hb-pwd" placeholder="输入红包口令" placeholder-class="p-hb-pwd" bindinput="bindWordTap"/>
+  </view>
+  <view class="get-btn" bindtap="bindGetTap"></view>
+</view>

@@ -1,0 +1,99 @@
+/* pages/component/index.wxss */
+
+.recommends {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 20rpx; */
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.recommends-tip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20rpx 0;
+  color: rgb(102, 102, 102);
+  font-size: 24rpx;
+}
+
+.recommends-line {
+  width: 70rpx;
+  height: 3rpx;
+  background: rgb(192, 192, 192);
+}
+
+.recommends-dot {
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 6rpx;
+  background: rgb(192, 192, 192);
+}
+
+.recommends-sale {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.recommends-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340rpx;
+  height: 428rpx;
+  border: 1px solid rgb(242, 242, 242);
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.recommends-img {
+  width: 260rpx;
+  height: 260rpx;
+  background: transparent;
+}
+
+.f4 {
+  margin-top: 12rpx;
+  width: 308rpx;
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  min-height:38px;
+}
+
+.recommends-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
+  padding: 14rpx 16rpx 0;
+}
+
+.f6{
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.f6-5 {
+  flex: 1;
+  font-size: 30rpx;
+  color: rgb(255, 160, 6);
+}
+
+.f6-6 {
+  flex: 1;
+  text-indent: 12rpx;
+  font-size: 20rpx;
+  color: rgb(102, 102, 102);
+  text-decoration: line-through;
+}
+
+.f7 {
+  flex: 2;
+  text-align: right;
+  font-size: 20rpx;
+  color: rgb(102, 102, 102);
+}

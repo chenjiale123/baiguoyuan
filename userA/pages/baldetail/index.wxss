@@ -1,0 +1,17 @@
+/* index.wxss */
+
+.content{display: flex;flex-direction: column;}
+.balance {width: 100%;height: 343rpx;display: flex;flex-direction: column;justify-content: center;align-items: center;background-size: 100% 100%;background-repeat: no-repeat;margin-bottom: 9rpx;}
+.balance-content {font-size: 80rpx;color: #fff;text-align: center;font-weight: 600;margin-top: -80rpx;}
+.balance-detail {font-size: 24rpx;margin-top: 4rpx;display: flex;align-items: center;color: #fff;}
+.balance-info-image {width: 34rpx;height: 24rpx;margin-right: 14rpx;}
+.yen {font-size: 54rpx;margin-right: 10rpx;}
+.purchase-info {display: block;margin: 0 24rpx;padding: 20rpx 0 16rpx 0;color: rgb(100, 100, 100);border-bottom: 1px solid rgb(242, 242, 242);}
+.purchase-place {color: rgb(51, 51, 51);font-size: 32rpx;}
+.info-1 {display: flex;justify-content: space-between;align-items: center;}
+.purchase-money1 {font-size: 42rpx;color: #37D260;}
+.purchase-money2 {font-size: 42rpx;color: rgb(248, 138, 11);}
+.info-2 {margin-top: 14rpx;display: flex;justify-content: space-between;font-size: 24rpx;color: rgb(153, 153, 153);}
+.coupon {display: flex;align-items: center;justify-content: center;flex-direction: column;}
+.coupon image {margin-top: 45rpx;width: 480rpx;height: 300rpx;}
+.coupon text {font-size: 26rpx;color: rgb(102,102,102);margin-top: 11rpx;}

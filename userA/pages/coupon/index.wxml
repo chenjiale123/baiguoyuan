@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="status-box">
+    <view class="{{couponStatus == '1' ? 'status active' : 'status'}}" data-status='1' bindtap="bindCouponTap">未使用</view>
+    <view class="{{couponStatus == '2' ? 'status active' : 'status'}}" data-status='2' bindtap="bindCouponTap">已使用</view>
+    <view class="{{couponStatus == '3' ? 'status active' : 'status'}}" data-status='3' bindtap="bindCouponTap">已过期</view>
+  </view>
+  <!--未使用-->
+  <view class="{{!noCouponShowFlag && couponStatus == '1' ? 'coupon-box' : 'coupon-box hidden'}}">
+    <view style="background-image:url('{{item.couponType == '1' ? bg_green : item.couponType == '2' ? bg_blue : bg_orange}}');" class="item" wx:for="{{noUseCouponList}}" wx:key="{{item.couponID}}" >
+      <view class="item-lt">
+        <view class="{{item.couponWay == 1 || item.couponWay == 3 ? 'price' : 'hidden'}}"><text class="yen">¥</text><text>{{item.couponValue/100}}</text></view>
+        <view class="{{item.couponWay == 2 || item.couponWay == 4 ? 'discount' : 'hidden'}}"><text>{{item.couponValue/10}}</text><text class="yen">折</text></view>
+        <view class="f-h2">{{item.couponTypeStr}}</view>
+      </view>
+      <view class="item-rt">
+        <view class="rt-top">
+          <view class="f-h3">{{item.couponName}}</view>
+          <view class="f-h4">{{item.limitValueStr}}</view>
+        </view>
+        <view class="expires">
+          有效期:
+          <view class="time">{{item.gainTime}} 至 {{item.expireTime}}</view>
+        </view>
+        <view class="{{item.showUseButton == 'N' ? 'use-btn hidden' : item.couponType=='2' ? 'use-btn color-blue' : 'use-btn color-orange'}}" data-couponCode="{{item.couponCode}}" data-limitValueStr="{{item.limitValueStr}}" data-couponName="{{item.couponName}}" data-couponValue="{{item.couponValue}}" data-couponType="{{item.couponType}}" data-couponWay="{{item.couponWay}}" bindtap="bindUseTap">使用</view>
+      </view>
+    </view>
+  </view>
+  <!--已使用-->
+  <view class="{{!noCouponShowFlag && couponStatus == '2' ? 'coupon-box coupon-used' : 'coupon-box coupon-used hidden'}}">
+    <view style="background-image:url('{{bg_gray}}');" class="item" wx:for="{{usedCouponList}}" wx:key="{{item.couponID}}">
+      <view class="item-lt">
+        <view class="{{item.couponWay == 1 || item.couponWay == 3 ? 'price' : 'hidden'}}"><text class="yen">¥</text>{{item.couponValue/100}}</view>
+        <view class="{{item.couponWay == 2 || item.couponWay == 4 ? 'discount' : 'hidden'}}">{{item.couponValue/10}}<text class="yen">折</text></view>
+        <view class="f-h2">{{item.couponTypeStr}}</view>
+      </view>
+      <view class="item-rt">
+        <view class="rt-top">
+          <view class="f-h3">{{item.couponName}}</view>
+          <view class="f-h4">{{item.limitValueStr}}</view>
+        </view>
+        <view class="expires">
+          有效期:
+          <view class="time">{{item.gainTime}} 至 {{item.expireTime}}</view>
+        </view>
+        <image class="icon-used" src="/source/images/icon_coupon_used@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <!--已过期-->
+  <view class="{{!noCouponShowFlag && couponStatus == '3' ? 'coupon-box coupon-expired' : 'coupon-box coupon-expired hidden'}}">
+    <view style="background-image:url('{{bg_gray}}');" class="item" wx:for="{{expiredCouponList}}" wx:key="{{item.couponID}}">
+      <view class="item-lt">
+        <view class="{{item.couponWay == 1 || item.couponWay == 3 ? 'price' : 'hidden'}}"><text class="yen">¥</text>{{item.couponValue/100}}</view>
+        <view class="{{item.couponWay == 2 || item.couponWay == 4 ? 'discount' : 'hidden'}}">{{item.couponValue/10}}<text class="yen">折</text></view>
+        <view class="f-h2">{{item.couponTypeStr}}</view>
+      </view>
+      <view class="item-rt">
+        <view class="rt-top">
+          <view class="f-h3">{{item.couponName}}</view>
+          <view class="f-h4">{{item.limitValueStr}}</view>
+        </view>
+        <view class="expires">
+          有效期:
+          <view class="time">{{item.gainTime}} 至 {{item.expireTime}}</view>
+        </view>
+        <image class="icon-expired" src="/source/images/icon_coupon_expired@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="{{noCouponShowFlag ? 'no-coupon' : 'no-coupon hidden'}}">
+    <image class="icon-nocoupons" src="/source/images/home_nocoupons_defaultpage@2x.png"></image>
+    <view class="f-h2">没有{{noCouponText}}的优惠券</view>
+  </view>
+</view>

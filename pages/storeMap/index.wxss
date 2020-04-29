@@ -1,0 +1,19 @@
+/*.container{box-sizing: content-box}*/
+.search-box{display:flex;padding:10rpx 0;width:100%;background:#FFF;border-bottom: 1rpx solid rgb(220,220,220);min-height:22px;}
+.search-box .city{display:flex;align-items:center;margin:5rpx 25rpx;font-size:30rpx;color:#000;border-right:1rpx solid rgb(229,229,229)}
+.add-middle{display: flex;flex-direction: column;align-items: center;justify-content: center;margin:0 20rpx;}
+.icon-addinput{width:20rpx;height:10rpx;}
+.search{font-size:30rpx;margin:5rpx 15rpx;color: rgb(178,178,178);flex:1;height:55rpx;line-height: 55rpx;}
+#map{width:100%;flex:1;}
+.detail-addr-box{width: 100%;border-top: 1px solid rgb(229,229,229);background: #FFF;overflow: hidden}
+.addr-box{padding:30rpx;}
+.addr-h2-box{display: flex;justify-content: space-between;font-size:30rpx;}
+.addr-h2{color: rgb(53,53,53);font-weight:600;}
+.addr-h2-dist{color: rgb(74,144,226)}
+.addr-h3{margin-top: 10rpx;font-size:28rpx;color: rgb(53,53,53)}
+.addr-p{margin-top: 20rpx;font-size: 24rpx;color: rgb(53,53,53)}
+.addr-btn-box{display: flex;border-top: 1rpx solid rgb(229,229,229);padding: 22rpx 0;}
+.nav-btn{border-left: 1rpx solid rgb(229,229,229)}
+.phone-btn,.nav-btn{flex:1;display: flex;align-items: center;justify-content:center;background: #FFF;font-size:30rpx;}
+.img-middle{display: flex;flex-direction:column;justify-content:center;margin-right:20rpx; }
+.icon-tel,.icon-nav{width:60rpx;height:60rpx;}

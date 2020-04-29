@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="main">
+    <view class="tips">姓名：</view>
+    <view class="in">
+        <input type="text" class="input" placeholder="{{defaultName}}" value="{{name}}"bindblur="bindBlurHandler" bindfocus="bindFocusHandler" bindinput="bindNameTap" focus="{{getfocus}}" />
+        <label bindtap="bindCloseTap"><image class="{{closeShowFlag ? 'icon-close' : 'icon-close hidden'}}" src="/source/images/icon_modify_user_info.png"></image></label>
+    </view>
+    <view class="tips">性别：</view>
+    <view class="sex">
+        <view class="chose" bindtap="choseSex" data-sex="F">
+            <view class="classname">女</view>
+            <image src="/source/images/icon_vipinfo_gou.png" style="padding-right:30rpx;width:26rpx;height:22rpx;" wx:if="{{show}}"></image>
+        </view>
+        <view class="chose" bindtap="choseSex" data-sex="M">
+            <view class="classname">男</view>
+            <image src="/source/images/icon_vipinfo_gou.png" style="padding-right:30rpx;width:26rpx;height:22rpx;" wx:if="{{!show}}"></image>
+        </view>
+    </view>
+    <view class="tips">出生日期：</view>
+    <picker mode="date" value="{{date}}" start="1965-01-01" end="2030-12-31" bindchange="bindDateChange">
+        <view class="in">
+            <view style="margin-left: 36rpx;font-size:32rpx;">{{date}}</view>
+        </view>
+    </picker>
+    <button class="submit" bindtap="modifyUserInfo" disabled="{{!isNameEdit && !isSexEdit && !isDateEdit}}" >确定</button>
+</view>

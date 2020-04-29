@@ -1,0 +1,33 @@
+<view class="content">
+  <view class="integrat" style="background-image:url('{{myjifenbg}}')">
+    <view class="integrat-1" bindtap='navigateInfo'>积分规则
+      <image src='/source/images/icon_arrow_white.png' style='height: 28rpx;width:16rpx;padding-left: 8rpx;'></image>
+    </view>
+    <view class="integrat-2">
+      <text>{{allInte}}</text>
+      <text style='font-size:30rpx;margin-left: 8rpx;'>积分</text>
+    </view>
+  </view>
+  <view wx:if="{{hasInte}}">
+    <view class="tips" wx:if="{{hasInte}}">
+      <view class="tips-1">即将到期({{expireDate}})：{{expireInteg}}分</view>
+      <view class="tips-2">积分兑换：公众号>会员中心>积分兑换|好礼多多</view>
+    </view>
+    <view class="integrat-info" wx:for="{{List}}" wx:key="item">
+      <view>
+        <view class="info-1">{{item.modifyType}}</view>
+        <view class="info-2">{{item.modifyTime}}</view>
+      </view>
+      <view class="{{item.symbol ? 'p-m1' : 'p-m2'}}">{{item.modifyValue}}分</view>
+    </view>
+  </view>
+
+  <!--无余额-->
+  <view wx:if="{{!hasInte}}">
+    <view class="no-integrat">
+      <image src="/source/images/home_noorders_defaultpage.png"></image>
+      <text>您还没有积分哦~</text>
+      <navigator open-type="switchTab" url="/pages/index/index" class="toGetberry" hover-class="none">去店里看看？</navigator>
+    </view>
+  </view>
+</view>

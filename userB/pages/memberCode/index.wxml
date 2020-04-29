@@ -1,0 +1,15 @@
+<!--pages/user/memberCode/index.wxml-->
+<view class='contain'>
+  <view>
+    <view class='top'>会员码</view>
+    <view class="member-code">
+      <text class="code">{{code}}</text>
+      <canvas canvas-id="barcode" />
+      <view class="fresh">
+        <image class="icon-img1" src="/source/images/icon_refresh@2x.png"></image>
+        <text>会员码每30秒自动更新，请在店内消费时使用</text>
+      </view>
+    </view>
+  </view>
+  <image src='/source/images/bg_code.jpg' class='icon-img2'></image>
+</view>

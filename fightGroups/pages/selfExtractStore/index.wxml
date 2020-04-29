@@ -1,0 +1,64 @@
+<import src="/pages/template/index.wxml" />
+<view class='container'>
+  <view class='section-border'>
+    <view class="search-box">
+      <view class="search-outer">
+        <view class="icon-middle" wx:if = "{{!cityChangeable}}">
+          <image class="icon-search" src="/source/images/icon_loupe@2x.png"></image>
+        </view>
+        <navigator class="nav-city" url='/pages/cityList/index' wx:if="{{cityChangeable}}">
+          <text>{{cityName}}</text>
+          <image class="icon-down" src="/source/images/icon_addinput_down@2x.png"></image>
+        </navigator>
+        <input class='{{cityChangeable ? "border-left" : ""}}' placeholder="请输入收货地址" value="{{inputValue}}" bindfocus="bindFocusHandler" bindblur="bindBlurHandler" bindinput="bindInputTap" bindconfirm="bindConfirm" />
+        <label class="icon-middle" bindtap="bindCloseTap">
+          <image class="{{closeShowFlag ? 'icon-close' : 'icon-close hidden'}}" src="/source/images/btn_close@2x.png"></image>
+        </label>
+      </view>
+    </view>
+    <view class='now-location'>
+        <text>{{addrNow}}</text>
+      </view>
+  </view>
+  <view class="{{storeListBoxShowFlag ? 'title' : 'title hidden'}}">
+    <label class='img-middle'>
+      <image class='icon-loc' src='/source/images/icon_add_gary.png'></image>
+    </label>
+    <text>附近提货门店</text>
+  </view>
+
+  <!-- 提货门店列表 -->
+  <view class="{{storeListBoxShowFlag ? 'store-list' : 'store-list hidden'}}">
+    <view class='item-box' wx:key="{{index}}" data-key="{{index}}" wx:for="{{storeList}}" bindtap='bindStoreTap' data-lat="{{item.lat}}" data-lon="{{item.lon}}">
+      <image class="{{index == 0 && item.storeID == selfLiftStore.storeID ? 'icon-jiaobiao' : 'icon-jiaobiao hidden'}}" src='/source/images/icon_jiaobiao.png'></image>
+      <view class='item-l'>
+        <view class='l-tit'>{{item.storeName}}</view>
+        <view class='l-addr'>{{item.address}}</view>
+        <view class='l-opentime'>门店营业时间：{{item.openingTime}}</view>
+      </view>
+      <view class='item-r' data-lat="{{item.lat}}" data-lon="{{item.lon}}" data-name="{{item.storeName}}" data-address="{{item.address}}" catchtap='toStoreMapPage'>
+        <text class='r-dis'>{{item.distance}}</text>
+        <image class='icon-dis' src='/source/images/icon_location.png'></image>
+      </view>
+    </view>
+  </view>
+
+  <!--地址联想-->
+  <view class="{{regionListBoxShowFlag ? 'result-box': 'result-box hidden'}}">
+    <view class="item" wx:for="{{regionList}}" wx:key="{{item.id}}" 
+    data-title="{{item.title}}" data-lon="{{item.location.lng}}" data-lat="{{item.location.lat}}" bindtap='bindRegionTap'>
+      <view class="item-address">{{item.title}}</view>
+      <view class="item-title">{{item.address}}</view>
+    </view>
+  </view>
+
+  <!-- 没有提货门店 -->
+  <view class="{{noResultBoxShowFlag ? 'no-result-box' : 'no-result-box hidden'}}">
+    <view class='no-up'>
+      <image class='icon-nostore' src='/source/images/home_nostore_defaultpage2.png'></image>
+      <view class='txt'>该地址附近暂时没有提货店</view>
+      <view class='txt'>欢迎下载百果园App享更多优质服务</view>
+    </view>
+    <template is="refund" />
+  </view>
+</view>

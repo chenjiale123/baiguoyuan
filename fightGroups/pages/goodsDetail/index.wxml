@@ -1,0 +1,157 @@
+<import src="/pages/template/index.wxml" />
+<view class="container" wx:if="{{isReady}}">
+  <view class='swiper-box'>
+    <swiper indicator-dots="{{indicatorDots}}" duration="500" interval="3000" autoplay="true" indicator-color="rgb(245,245,245)" indicator-active-color="rgb(55,210,96)">
+      <block wx:for="{{goodsDetailObj.detailHeadPicList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="slide-image" src="{{picUrl}}{{item}}" mode='widthFix' />
+        </swiper-item>
+
+      </block>
+    </swiper>
+  </view>
+
+  <view class='c-m-box'>
+    <view class='p-wrap' style="background-image:url('{{bg_detail_priceinfo}}');">
+      <view class='p-box'>
+        <!-- <image class='icon_pintuanjia' src='/source/images/icon_pintuanjia.png'></image> -->
+        <view class='corner-mark'>{{goodsDetailObj.groupSize}}人团</view>        
+        <view class="price">
+          <label class='yen'>¥</label>
+          <text class='p-big'>{{goodsDetailObj.groupPriceArr[0]}}</text>
+          <label class='p-small'>.{{goodsDetailObj.groupPriceArr[1]}}</label>
+        </view>
+
+        <view class='del-p-box'>
+          <!-- <view class='del-p1'>原价</view> -->
+          <view class='del-p2'>¥{{goodsDetailObj.originalPrice}}</view>
+        </view>
+        <!-- <label class='m-p'>{{goodsDetailObj.spec}}</label> -->
+
+      </view>
+      <view class='right-box' style="background-image:url('{{bg_sandclock}}');">
+        <view class='t-t'>距结束仅剩</view>
+        <view class='time-box'>
+          <!-- <view class='t-bg'>{{endTimeDate[0]}}</view>天 -->
+          <view class='t-bg' style='width:45rpx;'>{{endTimeDate[1]}}</view>时
+          <view class='t-bg'>{{endTimeDate[2]}}</view>分
+          <view class='t-bg'>{{endTimeDate[3]}}</view>秒
+          <view class='t-bg'>{{ms}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='m-t-box'>
+      <view style='flex:1'>
+        <view  class='m-t'>{{goodsDetailObj.goodsName}}</view>
+        <view class='spec-info'>
+          <view class="m-des">{{goodsDetailObj.spec}}</view>
+          <label class='m-p'>已团{{goodsDetailObj.sellCount}}件</label>
+        </view>
+      </view>
+      <!-- <view class='corner-mark' style="background-image:url('{{cornermark_bg}}');">{{goodsDetailObj.groupSize}}人团</view> -->
+      <button class='share-box' open-type='share'>
+        <image class='icon-share' src="/source/images/icon_share_0.png"></image>
+        <view class='share-t'>分享</view>
+      </button>
+    </view>
+    
+
+    <!-- 提示 -->
+    <view bindtap='showTips' class='tipsline'>
+      <template is="tips-line" data='{{picChange}}' />
+      <image src='/source/images/icon_arrow_gary.png' class='tip-img'></image>
+    </view>
+    <!-- <template is="template-3" data="{{obj}}" /> -->
+    <view class="o-box" wx:if="{{enableJoin}}" hidden="{{ (!moreGroupShowFlag || endTimeDate == '00:00:00:00')}}">
+      <view class='o-t-w'>
+        <view class='t-l'>小伙伴们在开团，可直接参与</view>
+        <view class="{{showMoreFlag?'t-r':'hidden'}}"   bindtap='showGroup'>查看更多
+          <image class='icon-right' src='/source/images/icon_arrow_gary.png'></image>
+        </view>
+      </view>
+      <view class='club-list cl-p'>
+        <view class="{{timeDate[item.groupID] == '00:00:00' ? 'item hidden' : 'item i-p'}}" wx:for="{{group.moreGroup(goodsDetailObj.currentGroupList)}}" wx:key="{{index}}">
+          <label class='item-left img-middle'>
+            <image class='item-image' src='{{item.wxProfileUrl}}'></image>
+          </label>
+          <view class='item-mid m-c'>
+            <view class='it-m-t'>{{item.wxNickName}}</view>
+          </view>
+          <view class='item-mid i-c'>
+            <view class='it-m-t i-n'>差
+              <label class='n-c'>{{item.groupSize-item.currentCount}}</label>人拼成</view>
+            <view class='time'>剩余{{timeDate[item.groupID]}}</view>
+          </view>
+          <view class='item-right'>
+            <view class='cantuan can_t' data-groupid="{{item.groupID}}" data-openerid="{{item.openerID}}" bindtap='bindCanTuan'>去参团</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='c-img-box'>
+    <view class='b-t'>商品详情</view>
+    <view class='pic-w' wx:key="{{index}}" wx:for="{{goodsDetailObj.detailPicList}}">
+      <image class='icon-detailImg' src='{{picUrl}}{{item}}' mode='widthFix' lazy-load="true"></image>
+    </view>
+
+  </view>
+
+  <view class="{{isIphoneX ? 'c-b-box iphoneXBt' : 'c-b-box' }}">
+    <view class="join-btn" bindtap='toIndex'>
+      <image class='icon_home' src='/source/images/icon_home.png'></image>
+      <view class='index'>首页</view>
+    </view>
+    <view class="{{offStockFlag || soldOutFlag ? 'hidden' : endTimeDate == '00:00:00:00'? 'open-btn off' : 'open-btn'}}" bindtap='openGroup' disable='{{offStockFlag || soldOutFlag}}'>
+      ￥{{goodsDetailObj.groupPrice}} 一键开团
+    </view>
+  </view>
+
+  <!--遮罩层-->
+  <view class="{{currentGroupShowFlag ? 'mask' : 'mask hidden'}}" catchtap='bindCloseTap'>
+
+  </view>
+  <view class="{{currentGroupShowFlag ? 'club-box' : 'club-box hidden'}}">
+    <view class='c-t-box'  bindtap='bindCloseTap'>
+      <view class='c-t'>正在开团</view>
+      <image class='icon-close' src='/source/images/btn_close@2x.png' bindtap='bindCloseTap'></image>
+    </view>
+    <view class='club-list'>
+      <view class="{{timeDate[item.groupID] == '00:00:00' ? 'item hidden' : 'item'}}" wx:for="{{goodsDetailObj.currentGroupList}}" wx:key="{{index}}">
+        <label class='item-left img-middle'>
+          <image class='item-image' src='{{item.wxProfileUrl}}'></image>
+        </label>
+        <view class='item-mid'>
+          <view class='it-m-t'>{{item.wxNickName}}</view>
+          <view class='time'>还差{{item.groupSize-item.currentCount}}人成团，剩余{{timeDate[item.groupID]}}</view>
+        </view>
+        <view class='item-right'>
+          <view class='cantuan can_t' data-groupid="{{item.groupID}}" data-openerid="{{item.openerID}}" bindtap='bindCanTuan'>去参团</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- Tips -->
+<view wx:if="{{tipsShow}}" catchtap='hideTips' class='tips-template'>
+</view>
+<view wx:if="{{tipsShow}}" animation="{{animationData}}" class='tipsAll'>
+  <template is="tips-content" />
+  <view class='tips-btn' bindtap='hideTips'>我知道了</view>
+</view>
+
+
+<!-- 蒙层 -->
+<template is="mask" data="{{prevent}}" />
+
+<!-- 模块 -->
+<wxs module="group">
+  var moreGroup = function(list) {
+    var arr = list && list.length > 2 ? list.slice(0, 2) : list;
+    return arr;
+  }
+  module.exports.moreGroup = moreGroup;
+</wxs>

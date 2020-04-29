@@ -1,0 +1,53 @@
+/*刷新动画*/
+@-webkit-keyframes loadRotate{
+  from{-webkit-transform:rotateZ(0deg);}
+  to{-webkit-transform:rotateZ(360deg);}
+}
+@keyframes loadRotate{
+  from{transform:rotateZ(0deg);}
+  to{transform:rotateZ(360deg);}
+}
+page{min-height: 100%;}
+.container{background: rgb(245,245,245);height: auto;min-height: 100%;}
+.hidden{display: none!important;}
+.banner{position:fixed;top:0;display: flex;width: 100%;background:#FFF;height:88rpx;z-index: 9999;}
+.tab{flex: 1;line-height:88rpx;text-align: center;font-size: 30rpx;color: rgb(53,53,53);border-bottom: 1rpx solid rgb(229,229,229)}
+.on{color: #37D260;border-bottom: 6rpx solid #37D260}
+
+.record-box{flex:1;width: 100%;margin-top:88rpx;}
+.r-item{margin-bottom: 24rpx;background:#FFF;}
+.item-store{display: flex;padding:20rpx 24rpx;border-bottom: 1rpx solid rgb(242,242,242)}
+.img-middle{display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.icon-bill{width: 24rpx;height: 24rpx;margin-right: 16rpx;}
+.s-name{flex:1;font-size: 28rpx;color: rgb(53,53,53)}
+.s-time{font-size: 28rpx;color: rgb(51,51,51)}
+.item-goods{display:flex;padding:32rpx 24rpx;font-size: 34rpx;color: rgb(51,51,51);border-bottom: 1rpx solid rgb(242,242,242);font-weight: 600;}
+.g-name{flex:1;}
+.item-total{display:flex;justify-content:flex-end;align-items:center;padding:20rpx 17rpx;font-size: 28rpx;color: rgb(51,51,51);border-bottom: 1rpx solid rgb(242,242,242)}
+.total{font-size: 34rpx;color: rgb(255,138,0);font-weight: 600;}
+.icon-next{width:18rpx;height: 30rpx;margin-left: 10rpx;}
+.item-ser{display: flex;padding:12rpx 17rpx;}
+.lay-end{justify-content: flex-end;}
+.lay-between{justify-content: space-between;align-items: center;}
+.no-refund{font-size: 26rpx;color: rgb(153,153,153);flex:1;}
+.owner-btn{padding:12rpx 52rpx;font-size: 24rpx;color: rgb(51,51,51);border: 1rpx solid rgb(102,102,102);border-radius:6rpx;}
+.refund-btn{padding:12rpx 16rpx;font-size: 24rpx;color: #37D260;border:1rpx solid #37D260;margin-left: 16rpx;border-radius: 6rpx;}
+
+.app-goods{height:220rpx;width:auto;}
+.f-c{color: rgb(248,138,11)}
+.icon-serial{width: 36rpx;height: 36rpx;margin-right: 16rpx;}
+.img-box{width:100%;white-space: nowrap;}
+.icon-fruit{width:144rpx;height:144rpx;margin-right: 16rpx;}
+
+
+.no-store-order,.no-app-order{flex:1;display:flex;flex-direction:column;}
+.icon-noorders{width: 400rpx;height: 400rpx;margin-top: 110rpx;}
+.f-t{font-size: 26rpx;color: rgb(102,102,102);margin-top: 18rpx;text-align: center;flex:1;}
+
+.refresh-block{display:flex;justify-content:center;font-size: 26rpx;align-items: center;color: rgb(102,102,102)}
+.icon-refresh{width: 40rpx;height: 40rpx;margin: 20rpx;animation: loadRotate 1s linear infinite;}
+
+
+.pagoda{text-align: center;margin-bottom: 10rpx;}
+.icon-pagoda{width: 104rpx;height: 54rpx;}
+.f-p{font-size: 24rpx;color: rgb(207,207,207);margin-top: 4rpx;}

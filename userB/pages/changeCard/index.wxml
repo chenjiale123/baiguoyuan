@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="t-box">
+    <image class="icon-changecard" src="/source/images/icon_changecard_big.png"></image>
+    <view class="p-t">当前会员账号</view>
+    <view class="phone">{{oPhoneNumText}}</view>
+  </view>
+  
+  <view class="pwd-box">
+    <view class="pwd-item">
+      <label class="img-middle"><image class="icon-phone" src="/source/images/login_icon_iphone.png"></image></label>
+      <input class="pwd" type="number" placeholder="新手机号" maxlength="11" bindinput="bindPhoneTap" />
+    </view>
+    <view class="pwd-item mt">
+      <label class="img-middle"><image class="icon-lock" src="/source/images/login_icon_lock.png"></image></label>
+      <input class="pwd" type="number" placeholder="短信验证码" maxlength="4" bindinput="bindCodeTap"/>
+      <view class="{{vcodeBtnDisabled ? 'vcode' : 'vcode active'}}" bindtap="sendCode">{{vcodeText}}</view>
+    </view>
+    <!--<view class="warn">*当前账号状态异常，请联系客服 400-181-1212</view>-->
+  </view>
+
+  <view class="{{cardBtnDisabled ? 'pwd-btn' : 'pwd-btn on'}}" data-card-btn-disabled="{{cardBtnDisabled}}" bindtap="bindCardTap">立即换卡</view>
+
+  <view class="des-box">
+    <view class="d-t">*会员更换手机号码注意事项，请确认后谨慎操作！
+</view>
+    <view class="f-p">1、更换的新手机号码必须为“非百果园会员”，指未在百果园注册的手机号码。如新手机号码已注册过会员，如需更换，可先将新手机会员注销成非会员，再进行更换操作。注销方法：新手机号码编辑短信发送“zx”至1069-0133-1212”，按指示操作即可（如有余额，请先消费完再进行注销）
+</view>
+    <view class="f-p">2、更换成功后，微信自动更新绑定新手机号码，余额变动提醒将不再发送给旧号码。
+</view>
+    <view class="f-p">3、旧手机会员状态为“锁定”或“挂失”状态时，无法操作自助更换手机号码，可联络客服400-181-1212咨询处理。</view>
+  </view>
+  
+</view>

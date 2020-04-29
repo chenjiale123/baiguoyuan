@@ -1,0 +1,12 @@
+/* index.wxss */
+page {background-color: rgb(242, 242, 242);}
+.main{display: flex;flex-direction: column;}
+.tips {margin: 24rpx 0 16rpx 32rpx;font-size: 28rpx;}
+.in {background-color: rgb(255, 255, 255);height: 90rpx;display: flex;align-items: center;justify-content: space-between;}
+.input {width: 100%;margin-left: 36rpx;font-size: 32rpx;}
+.sex {width: 100%;background-color: rgb(255, 255, 255);}
+.chose {display: flex;flex-direction: row;justify-content: space-between;margin-left: 36rpx;align-items: center;height: 90rpx;font-size: 32rpx;border-bottom: 1px solid rgb(242, 242, 242);}
+picker-view-column {text-align: center;}
+.submit {position: absolute;bottom: 0;width: 100%;text-align: center;height: 96rpx;line-height: 96rpx;background-color:#37D260;color: rgb(255, 255, 255);border-radius: 0;}
+.icon-close {width: 30rpx;height: 30rpx;margin-right: 30rpx;}
+.hidden {visibility: hidden;}

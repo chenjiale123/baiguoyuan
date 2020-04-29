@@ -1,0 +1,101 @@
+<view class="container">
+  <!--门店订单-->
+  <view class="{{orderDetailFlag == 'A' ? 'detail-box' : 'detail-box hidden'}}">
+    <!--<view class="item-store">
+      <label class="img-middle"><image class="icon-bill" src="/source/images/icon_bill_small.png"></image></label>
+      <view class="s-name">{{storeDetailObj.depName}}</view>
+      <view class="s-time">{{detailObj.payTime}}</view>
+    </view>-->
+
+    <view class="item-goods-box" >
+      <view class="item-goods" wx:for="{{storeDetailObj.goodsItem}}" wx:key="{{item.serialNumber}}">
+        <view class="g-name">{{item.goodsName}}</view>
+        <view class="g-qulty">{{item.goodsValue}}{{item.goodsSpec}}</view>
+      </view>
+    </view>
+
+    <view class="info-box">
+      <view class="t-box">
+        <view class="f-b">
+          <view>商品金额</view>
+          <view>￥{{storeDetailObj.orderAmount/100}}</view>
+        </view>
+        <!--<view class="f-b">
+          <view>运费</view>
+          <view>+￥{{storeDetailObj.freight}}</view>
+        </view>
+        <view class="f-b">
+          <view>全场满减</view>
+          <view>-￥{{storeDetailObj.reduceValue}}</view>
+        </view>-->
+      </view>
+      <view class="d-box">
+        <view class="total">实付金额:<view class="price">￥{{storeDetailObj.orderActualAmount/100}}</view></view>
+        <view class="d-time">消费时间：{{storeDetailObj.tradeTime}}</view>
+        <view class="d-time">订单小票号:{{storeDetailObj.orderTicket}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!--app订单-->
+  <view class="{{orderDetailFlag == 'B' ? 'detail-box' : 'detail-box hidden'}}">
+    <!--<view class="item-store">
+      <label class="img-middle"><image class="icon-bill" src="/source/images/icon_bill_small.png"></image></label>
+      <view class="s-name">北京朝阳区天鹅湾店</view>
+      <view class="s-time">{{detailObj.payTime}}</view>
+    </view>-->
+    <view class="{{appDetailObj.deliveryWay == '1' ? 'item-address hidden' : 'item-address'}}" style="background:url('{{colorline_bg}}') no-repeat left bottom #FFF;">
+      <view class="a-info">
+        <text class="name mr">{{appDetailObj.receiverAddress.userName}}</text>
+        <text class="phone">{{appDetailObj.receiverAddress.phoneNumber}}</text>
+      </view>
+      <view class="addr">{{appDetailObj.receiverAddress.gisAddress}}</view>
+    </view>
+    <view class="item-goods-box" >
+      <view class="item-goods" wx:for="{{appDetailObj.goodsList}}">
+        <label class="img-middle"><image class="icon-fruit" src="{{picUrl}}{{item.headPic}}"></image></label>
+        <view class="g-info">
+          <view class="g-up">
+            <view class="g-h1">{{item.goodsName}}</view>
+            <view class="g-p">{{item.spec}}</view>
+          </view>
+          
+          <view class="g-down">
+            <view class="g-p">数量：x{{item.count}}</view>
+            <view class="g-price">￥{{item.price/100}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-box">
+      <view class="t-box">
+        <view class="f-b">
+          <view>商品金额</view>
+          <view>￥{{appDetailObj.goodsTotalAmount/100}}</view>
+        </view>
+        <view class="f-b">
+          <view>运费</view>
+          <view>+￥{{appDetailObj.freight/100}}</view>
+        </view>
+        <view class="f-b" wx:for="{{appDetailObj.couponList}}">
+          <view>{{item.couponName == '优惠券' ? '优惠券' : '立减'}}</view>
+          <view>-￥{{item.couponValue/100}}</view>
+        </view>
+      </view>
+      <view class="d-box">
+        <view class="total">实付金额:<view class="price">￥{{appDetailObj.actualAmount/100}}</view></view>
+        <view class="{{appDetailObj.payTime ? 'd-time' : 'd-time hidden'}}">下单时间：{{appDetailObj.payTime}}</view>
+        <view class="{{appDetailObj.showOrderStatus == '1' ? 'd-time' : 'd-time hidden'}}">收货时间：{{appDetailObj.confirmTime}}</view>
+        <view class="d-time">订单小票号:{{appDetailObj.goodsOrderNum}}</view>
+      </view>
+    </view>
+    
+  </view>
+
+  <view class="pagoda">
+    <image class="icon-pagoda" src="/source/images/logo_pagoda.png"></image>
+    <view class="f-p">做更好吃的水果</view>
+    <view class="f-p">不好吃App瞬间退款</view>
+  </view>
+</view>

@@ -1,0 +1,125 @@
+<!--fightGroups/pages/paySuccess/index.wxml-->
+<import src="/pages/template/index.wxml" />
+<view class='allPage' wx:if="{{isReady}}">
+  <!-- 支付成功 拼团成功-->
+  <view style='width:100%;border-bottom:20rpx solid #f5f5f5' wx:if='{{joinSuccess}}'>
+    <view class='top-sale'>
+      <view class='sale'>
+        <!-- 未成团 -->
+        <view class='sale-inf' wx:if='{{!isComposition}}' bindtap='navigateGoodsDetail' data-goodsid='{{goodsID}}' data-activityid='{{activityID}}'>
+          <image class='sale-image' src='{{obj.pic}}'></image>
+          <view class='info'>
+            <view class='f1'>限时抢购</view>
+            <view class='f2'>￥{{obj.oriPrice}}</view>
+            <view class='f3'>￥{{obj.price[0]}}.{{obj.price[1]}}</view>
+          </view>
+        </view>
+        <!-- 成团 -->
+        <view class='sale-inf2' wx:if='{{isComposition}}'>
+          <view class='success-text'>
+            <image class='success-img' src='/source/images/icon_checkmark_small.png'></image>拼团成功！</view>
+          <view class='success-info'>拼团成功后凭自提码到门店提货哦~</view>
+        </view>
+
+        <view class='user-info'>
+          <view class='user-img' style="background-image:url('{{bg_pintuan}}');" wx:for="{{groupMemberList}}" wx:for-item="item" wx:for-index="index" wx:if='{{index <5}}'>
+            <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{index == 0}}"></image>
+            <view class='team-label' wx:if="{{index == 0}}">团长</view>
+
+            <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{item.wxProfileUrl && index != 0 && index <=5}}"></image>
+            <image class='user-img3' src='' wx:if="{{!item.wxProfileUrl}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提示 -->
+    <view bindtap='showTips' style='width:100%;'>
+      <template is="tips-line" data='{{picChange}}' />
+    </view>
+
+  </view>
+  <!-- 支付成功 拼团不成功-->
+  <view style='width: 100%;' wx:if='{{!joinSuccess}}'>
+    <view class='top'>
+      <view class='top-tip1'>
+        <view class='countT' wx:if='{{!isOver && !isFull}}'>拼团不成功</view>
+      </view>
+      <view class='top-tip2' wx:if='{{!isOver && !isFull}}'>款项将原路返还</view>
+      <!--未成团-a -->
+
+    </view>
+    <!-- 商品信息 -->
+    <view bindtap='navigateGoodsDetail' style='display:flex;justify-content:center;width:100%;border-bottom: 1px solid rgb(245,245,245)'>
+      <template is="msgItem" data="{{obj}}" />
+    </view>
+    <!-- 提示 -->
+    <template is="tips-line" />
+    <view class='noSuccessGroup'>
+      <view class='user-info' style='padding: 30rpx 0;background: #fff;'>
+        <view class='user-img' style="background-image:url('{{bg_pintuan}}');" wx:for="{{groupMemberList}}" wx:for-item="item" wx:for-index="index">
+          <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{index == 0}}"></image>
+          <view class='team-label' wx:if="{{index == 0}}">团长</view>
+
+          <image class='user-img2' src='{{item.wxProfileUrl}}' wx:if="{{item.wxProfileUrl && index != 0}}"></image>
+          <image class='user-img3' src='' wx:if="{{!item.wxProfileUrl}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 拼团成功 未成团 -->
+  <button class='share-btn' open-type="{{goodsOrderID ? 'share' : ''}}" wx:if='{{!isComposition && joinSuccess}}'>
+    <image src='/source/images/icon_share.png' style='width:36rpx;height:36rpx;margin-right:40rpx;'></image>
+    <text style='margin-right:20rpx;'>邀请好友参团</text>
+    <text style='margin-right:16rpx;'>{{layh}}:{{laym}}:{{lays}}</text>
+    <text>后结束</text>
+  </button>
+  <view class='share-tip' wx:if='{{!isComposition && joinSuccess}}'>分享到2个微信群，成功率高达99%</view>
+  <view class='take'>
+  <view class='take-time' wx:if='{{isComposition}}'>
+      <view class='take-info'>
+         <view class='t1'>提货时间</view>
+         <view style='text-align:center;'>{{obj.deliverySection}}</view>
+       </view>
+    </view>
+     <image  src='/source/images/bg_coupon_dottedline.png' style='height:26rpx;width:100%' wx:if="{{isComposition && obj.takeCode}}"></image>
+    <view class='take-code' wx:if='{{isComposition && obj.takeCode}}'>
+      <view class="member-code">
+        <canvas canvas-id="barcode" />
+      </view>
+      <view class='code-num'>提货码：{{obj.takeCode}}</view>
+    </view>
+  </view>
+  <!-- 成团 -->
+  <view class='success-btngroup' wx:if='{{isComposition}}'>
+    <view class='success-btn' bindtap='navigatePTorderDetail'>查看订单</view>
+    <view class='success-btn' bindtap='navigateFightGroupsIndex'>继续逛逛</view>
+  </view>
+
+
+  <!-- 拼团失败 -->
+  <view class='btn-and-tips' wx:if='{{!joinSuccess}}'>
+    <view class='btn' bindtap='naviagteFightGroup'>我来开这个团</view>
+  </view>
+  <view bindtap='backHomeBtn'>
+    <image src='/source/images/icon_float_backhome.png' class='backHome-img'></image>
+  </view>
+  <recommand obj="{{goodsList}}" bind:event='navigateGoodsDetail' style='width:100%;' bindtap="recommandNavigate" wx:if="{{isRecommend}}"> </recommand>
+
+
+
+  <!-- Tips -->
+  <view wx:if="{{tipsShow}}" catchtap='hideTips' class='tips-template'>
+  </view>
+  <view wx:if="{{tipsShow}}" animation="{{animationData}}" class='tipsAll'>
+    <template is="tips-content" />
+    <view class='tips-btn' bindtap='hideTips'>我知道了</view>
+  </view>
+
+</view>
+
+
+<!-- 蒙层 -->
+<template is="mask" data='{{prevent}}' />

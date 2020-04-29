@@ -1,0 +1,135 @@
+<!--pages/user/PTorderDetail/index.wxml-->
+<import src="/pages/template/index.wxml" />
+<view class='allPage'>
+  <view class='page-info' wx:if='{{isReady}}'>
+    <view class='top {{topCountDown? "highTop": ""}}' wx:if='{{isMakeOrder}}' style='background-image:url({{topCountDown? highTopbg: ""}})'>
+      <view class='top-tip2'>
+        <image class='statusNum01' src='/source/images/icon_clock.png' wx:if="{{topCountDown}}"></image>
+        <text>{{obj.orderStatus}}</text>
+      </view>
+      <view class='top-tipRight'>
+        <view class='top-tip1'>
+          <view class='tip1-1'>{{obj.groupSize}}人团</view>
+          <view class='tip1-2' wx:if="{{!isComposition && isPay && !isCancel}}">还差{{obj.currentNum}}人</view>
+        </view>
+
+        <view class='rest-time' wx:if="{{isPay && !isComposition &&!isCancel}}">组团剩余时间：{{layh}}:{{laym}}:{{lays}}</view>
+        <view class='rest-time' wx:if="{{!isPay && !isCancel && isMakeOrder}}">付款剩余时间：{{layh}}:{{laym}}:{{lays}}</view>
+      </view>
+      
+
+    </view>
+    <view class="top order-process" wx:else>
+      <view class="process">
+        <image src="/source/images/icon_flow_1.png"></image>
+        <view class="process-p1">选择商品</view>
+        <view class="process-p2">开团/参团</view>
+      </view>
+      <view class="divide-line"></view>
+      <view class="process">
+        <image src="/source/images/icon_flow_2.png"></image>
+        <view class="process-p1">邀请好友</view>
+        <view class="process-p2">好友参团</view>
+      </view>
+      <view class="divide-line"></view>
+      <view class="process">
+        <image src="/source/images/icon_flow_3.png"></image>
+        <view class="process-p1">人满成团</view>
+        <view class="process-p2">门店提货</view>
+      </view>
+    </view>
+    <!-- 收货地址 -->
+    <view class='border'>
+      <view class='location'>
+        <view class='L-info'>
+          <view class='L-info1'>提货门店: {{store.storeName || store.shortName}}</view>
+          <view class='L-info2'>{{store.address}}</view>
+          <view class='L-info3'>门店营业时间: {{store.openingTime}}</view>
+        </view>
+        <view class='L-operation' wx:if='{{!isMakeOrder}}' bindtap='navigteSelfExtractStore'>
+          <view class='L-oi'>修改</view>
+          <view>
+            <image src='/source/images/icon_arrow.png' class='L-img'></image>
+          </view>
+        </view>
+        <view class='L-operation2' wx:if='{{isMakeOrder}}'>
+          <view bindtap='callServicePhone' class='operation bb'>
+            <image src='/source/images/icon_tel.png' class='L-img2'></image>
+          </view>
+
+          <view class='bor'></view>
+          <view bindtap='navigateNav' class='operation bt'>
+            <image src='/source/images/icon_nav.png' class='L-img2'></image>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <!-- 提取时间 -->
+    <view class='take-time' style='{{isTake || !isComposition || isCancel ? "margin-bottom: 20rpx;" : ""}}'>
+      <view class='take-info'>
+        <view class='t1'>提货时间</view>
+        <view style='text-align:center;'>{{obj.takeTime}}</view>
+      </view>
+    </view>
+    <image wx:if="{{!isTake && isComposition && !isCancel}}" src='/source/images/bg_coupon_dottedline.png' style='height:26rpx;width:100%'></image>
+    <!-- 提取码 -->
+    <view class='take-code' wx:if='{{!isTake && isComposition && !isCancel}}'>
+      <view class="member-code">
+        <canvas canvas-id="barcode" />
+      </view>
+      <view class='code-num'>提货码：{{obj.takeCode}}</view>
+    </view>
+    <!-- 商品信息 -->
+    <view bindtap='navigateGoodsDetail' style='display:flex;justify-content:center;width:100%;'>
+      <template is="msgItem" data="{{obj}}" />
+    </view>
+
+  <view bindtap='backHomeBtn' wx:if='{{isMakeOrderFlag}}'>
+    <image src='/source/images/icon_float_backhome.png' class='backHome-img'></image>
+  </view>
+
+    <view class='take-amount'>
+      <view style='padding:24rpx 0 28rpx;' wx:if='{{isMakeOrder}}'>
+        <view class='amount' wx:if='{{isMakeOrder}}'>订单金额：
+          <label class="yen {{cancelRefund ? 's-b' : 's-y'}}">¥</label>
+          <text class="p-big  {{cancelRefund ? 's-b' : 's-y'}}">{{obj.price[0]}}</text>
+          <label class="p-small  {{cancelRefund ? 's-b' : 's-y'}}">.{{obj.price[1]}}</label>
+        </view>
+        <view class='amount' wx:if='{{isMakeOrder && cancelRefund}}'>退款金额：
+          <label class="yen s-y">¥</label>
+          <text class="p-big s-y">{{obj.price[0]}}</text>
+          <label class="p-small s-y">.{{obj.price[1]}}</label>
+        </view>
+        <view class='time-info'  wx:if='{{isMakeOrder}}'>创建时间：{{createTime}}</view>
+        <view class='time-info' wx:if='{{isPay && isComposition }}'>成团时间：{{obj.completeTime}}</view>
+        <view class='time-info' wx:if='{{isPay && isTake}}'>提货时间：{{obj.confirmTime}}</view>
+        <view class='time-info' wx:if='{{isTake && !isRefund}}'>退款时间：{{obj.lastUpdate}}</view>
+        <view class='time-info' wx:if='{{isCancel}}'>取消时间：{{obj.lastUpdate}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 按钮组  -->
+<view class="{{isIphoneX ? 'btn-group iphoneXBt' : 'btn-group' }}" wx:if='{{isReady}}' >
+  <view class='btn-1'>
+    <view class='btn' bindtap='chanelOrder' wx:if='{{isMakeOrder && !isCancel && !isTake}}'>取消订单</view>
+    <view class='btn' wx:if='{{isRefund}}' bindtap='tuikuan'>申诉退款</view>
+    <view class='btn' wx:if='{{!isRefund && !iscomplaints && isTake}}' bindtap='callServicePhone'>联系门店</view>
+    <view class='btn b-c' wx:if='{{!isPay && isMakeOrder && !isCancel}}' bindtap='payrightNow'>立即付款</view>
+    <button class='btn b-i' style='padding: 0;border: none;' open-type='share' wx:if='{{!isComposition && isPay && !isCancel}}'>
+      <image src='/source/images/icon_share.png' class='btn-img'></image> 邀请好友</button>
+    <view class='btn b-c' wx:if='{{isCancel}}' bindtap='buyAgain'>重新购买</view>
+    <view class='btn b-c' wx:if='{{isTake}}' bindtap='buyAgain'>再次购买</view>
+  </view>
+  <form name='pagoda' report-submit='true' bindsubmit='submitTapFun' style='width:100%;' wx:if='{{!isMakeOrder && !isPay }}'>
+    <view class="price-wrapper btn-pay" >
+      <text>实付款:</text>
+      <text class="realpay">￥{{payPrice}}</text>
+    </view>
+    <button class="{{disable ? 'btn-pay off' : 'btn-pay'}}" formType='submit' bindtap='makeOrderBtn' disabled='{{disable}}'>立即支付</button>
+  </form>
+</view>
+
+<!-- 蒙层 -->
+<template is="mask" data='{{prevent}}' />

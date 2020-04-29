@@ -1,0 +1,22 @@
+
+<view class="container" style="background-image:url('{{bg}}');" >
+    <image class="icon-logo" src="/source/images/icon_logo.png"></image>
+    <form class="form" bindsubmit="formSubmit">
+        <view class="form-item-box">
+            <view class="form-item">
+                <label><image class="icon-iphone" src="/source/images/login_icon_iphone.png"></image></label>
+                <input type="number" value="{{phoneNum}}" placeholder="输入手机号" maxlength="11" placeholder-style="none" bindblur="bindBlurHandler" bindfocus="bindFocusHandler" bindinput="bindPhoneTap" focus="{{getfocus}}"/>
+                <label bindtap="bindCloseTap"><image class="{{closeShowFlag ? 'icon-close' : 'icon-close hidden'}}" src="/source/images/login_icon_delete_nor@2x.png"></image></label>
+                <view class="{{vcodeBtnDisabled ? 'btn-vcode vcode-off' : 'btn-vcode'}}" bindtap="sendCode">{{vcodeText}}</view>
+            </view>
+            <view class="form-item mt40">
+                <label><image class="icon-lock" src="/source/images/login_icon_lock.png"></image></label>
+                <input type="number" placeholder="短信验证码" placeholder-style="none" bindinput="bindCodeTap"/>
+            </view>
+            <view class="form-des mt16">
+                点击"登录"即表示您同意<text class="fwtk" bindtap="bindTextTap">《百果园用户服务条款》</text>
+            </view>
+        </view>
+        <view class="{{loginBtnDisabled ? 'btn-login btn-off' : 'btn-login'}}" data-login-btn-disabled="{{loginBtnDisabled}}" bindtap="bindLoginTap">登录</view>
+    </form>
+</view>

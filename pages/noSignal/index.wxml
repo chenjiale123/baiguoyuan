@@ -1,0 +1,5 @@
+<view class="container">
+  <image class="icon-disconnect" src="/source/images/defaultpage_disconnection@2x.png"></image>
+  <view class="f-h2">没信号啦，点击刷新按钮试试</view>
+  <view class="refresh-btn" bindtap="bindRefreshTap">刷新一下</view>
+</view>

@@ -1,0 +1,2 @@
+<!--pages/h5/berryRuleInfo/index.wxml-->
+ <web-view src="https://x.pagoda.com.cn/app/berryRoleInfo.html"></web-view> 

@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="search-box">
+        <navigator class="city" hover-class="none" url="/pages/cityList/index">{{cityName}}
+            <label class="add-middle">
+                <image class="icon-addinput" src="/source/images/icon_addinput_down@2x.png"></image>
+            </label>
+        </navigator>
+        <!--<input class="search" placeholder="请输入地址" bindinput="bindInputTap"/>-->
+        <navigator class="search" hover-class="none" open-type="redirect" url="/pages/search/index">
+            {{title}}
+        </navigator>
+    </view>
+    <!--有门店-->
+    <view class="{{hasStoreFlag ? 'store-list' : 'store-list hidden'}}">
+        <view class="item" 
+        data-longitude="{{item.lon}}" data-latitude="{{item.lat}}" bindtap="bindNavigatorTap" wx:for="{{storeData}}">
+            <view class="item-title">{{item.name}}</view>   
+            <view class="item-address">
+                <text>{{item.address}}</text>
+                <text class="col">{{item.distance}}</text>
+            </view>
+            <view class="item-time">门店营业时间：{{item.openingTime}}</view>
+        </view>
+    </view>
+    <!--无门店-->
+    <view class="{{hasStoreFlag ? 'no-store hidden' : 'no-store'}}">
+        <image class="icon-nostore" src="/source/images/store_nostore_defaultpage@2x.png"></image>
+        <view class="nav-to-store">
+            您搜索的地址附近没有百果园门店
+            <navigator class="link" hover-class="none" url="" bindtap="bindLinkTap">看看哪里有门店?</navigator>
+        </view>
+    </view>
+</view>

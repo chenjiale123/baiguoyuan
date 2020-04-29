@@ -1,0 +1,37 @@
+<!--pages/user/selfService/index.wxml-->
+<import src="/pages/template/index"/>
+<view class='contain'>
+    <view class='self-service' style="background-image:url('{{bg}}'); margin-top: 16rpx;" data-id="0" bindtap="navigateSelfService" data-urlinfo='payRecord'>
+        <view class='service'>
+            <image src='/source/images/icon_bill.png' style='width: 48rpx;height: 48rpx; margin-right: 25rpx;'></image>
+            <text>消费记录</text>
+        </view>
+        <image src='/source/images/icon_arrow.png' style='width:16rpx; height:28rpx;'></image>
+    </view>
+
+    <view class='self-service' style="background-image:url('{{bg}}')" bindtap="navigateSelfService" data-id="1" data-urlinfo="changeCard">
+        <view class='service'>
+            <image src='/source/images/icon_changecard.png' style='width: 48rpx;height: 48rpx; margin-right: 25rpx;'></image>
+            <text>自助换卡</text>
+        </view>
+        <image src='/source/images/icon_arrow.png' style='width:16rpx; height:28rpx;'></image>
+    </view>
+
+    <view class='self-service' style="background-image:url('{{bg}}')" bindtap='navigateSelfService' data-id='2' data-urlinfo="modifyPwd">
+        <view class='service'>
+            <image src='/source/images/icon_reset_password.png' style='width: 48rpx;height: 48rpx; margin-right: 25rpx;'></image>
+            <text>重置密码</text>
+        </view>
+        <image src='/source/images/icon_arrow.png' style='width:16rpx; height:28rpx;'></image>
+    </view>
+
+    <view class='self-service' style="background-image:url('{{bg}}')" bindtap='navigateSelfService' data-urlinfo="contactCustService">
+        <view class='service'>
+            <image src='/source/images/icon_cutomer_service.png' style='width: 48rpx;height: 48rpx; margin-right: 25rpx;'></image>
+            <text>联系客服</text>
+        </view>
+        <image src='/source/images/icon_arrow.png' style='width:16rpx; height:28rpx;'></image>
+    </view>
+
+  <template is="refund"/>
+</view>

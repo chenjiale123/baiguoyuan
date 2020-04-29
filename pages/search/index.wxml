@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="search-box">
+        <view class="search-outer">
+            <label class="icon-middle">
+                <image class="icon-search" src="/source/images/icon_loupe@2x.png"></image>
+            </label>
+            <input placeholder="输入地址" value="{{inputValue}}" bindfocus="bindFocusHandler" bindblur="bindBlurHandler" bindinput="bindInputTap" bindconfirm="bindConfirm" focus/>
+            <label class="icon-middle" bindtap="bindCloseTap">
+                <image class="{{closeShowFlag ? 'icon-close' : 'icon-close hidden'}}" src="/source/images/btn_close@2x.png"></image>
+            </label>
+        </view>
+        <navigator class="cancel" hover-class="none" open-type="navigateBack">取消</navigator>
+    </view>
+    <!--历史记录-->
+    <view class="{{historyBoxShowFlag ? 'history-box' : 'history-box hidden'}}">
+        <view class="history-item-list">
+            <navigator class="h-item" hover-class="none" wx:for="{{historyData}}" open-type="redirect" url="/pages/storeList/index?latitude={{item.latitude}}&longitude={{item.longitude}}&title={{item.title}}&address={{item.address}}&cityName={{item.cityName}}&cityId={{item.cityId}}">
+                <label>
+                    <image class="icon-add" src="/source/images/icon_add_gray@2x.png"></image>
+                </label>
+                <view class="h-item-inner">
+                    <view class="h-item-title">{{item.title}}</view>
+                    <view class="h-item-address">{{item.address}}</view>
+                </view>
+            </navigator>
+
+        </view>
+        <view class="btn-box">
+            <button bindtap="bindBtnTap">清空搜索历史</button>
+        </view>
+    </view>
+    <!--地址联想-->
+    <view class="{{resultBoxShowFlag ? 'result-box': 'result-box hidden'}}">
+        <navigator class="item" hover-class="none" wx:for="{{regionList}}" open-type="redirect" url="/pages/storeList/index?latitude={{item.location.lat}}&longitude={{item.location.lng}}&title={{item.title}}&address={{item.address}}&cityName={{cityName}}&cityId={{cityId}}">
+            <view class="item-address">{{item.title}}</view>
+            <view class="item-title">{{item.address}}</view>
+        </navigator>
+    </view>
+    <!--没有结果-->
+    <view class="{{noResultShowFlag ? 'no-result' : 'no-result hidden'}}">
+        <image class="icon-warn" src="/source/images/icon_warning@2x.png"></image>
+        <view class="no-text">没有搜索结果,请换个地点试试</view>
+    </view>
+</view>

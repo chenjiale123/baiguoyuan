@@ -1,0 +1,5 @@
+.container{background-size: cover;}
+.inp-box{width:60%;margin-top:330rpx;text-align: center;background:#FFF;border-radius:90rpx;}
+.hb-pwd{height:90rpx;line-height:90rpx;font-size: 34rpx;color: #333333;}
+/*.p-hb-pwd{font-size: 34rpx;color: rgb(153,153,153);font-weight: 600}*/
+.get-btn{margin-top: 125rpx;width: 60%;height: 110rpx;}

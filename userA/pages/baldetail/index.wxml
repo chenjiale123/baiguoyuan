@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="content">
+   <view class="balance" wx:if="{{isReady}}" style="background-image:url('{{myaccountbg}}')">
+    <view class="balance-content">
+      <text class="yen">￥</text>{{balance}}</view>
+       <view class="balance-detail">
+      <image src="/source/images/icon_wallet.png" class="balance-info-image"></image>当前余额</view>
+  </view>
+  <!--存在消费记录且有余额-->
+  <view class="purchase-info" wx:if="{{hasBalanceDetail}}" wx:for="{{purchase}}" wx:key="{{item.createTime}}">
+    <view class="info-1">
+      <view class="purchase-place">{{item.description}}</view>
+      <view class="{{item.symbol ? 'purchase-money2' : 'purchase-money1'}}">{{item.operaAmount}}</view>
+    </view>
+    <view class="info-2">
+      <text>{{item.createTime}}</text>
+      <view>钱包余额：{{item.balance/100}}元</view>
+    </view>
+  </view>
+  <!--无余额-->
+  <view class="coupon" wx:if="{{!hasBalanceDetail && isReady}}" >
+      <image src="/source/images/bg_coupon.png"></image>
+      <text>马上充值，立享优惠</text>
+  </view>
+</view>

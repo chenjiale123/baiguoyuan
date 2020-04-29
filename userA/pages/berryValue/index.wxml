@@ -1,0 +1,30 @@
+<!--berryValue index.wxml-->
+<view class="content">
+  <view class="berry" style="background-image:url('{{bg}}')">
+    <view class="berry-1" bindtap='navigateInfo'>果粒值规则
+      <image src='/source/images/icon_arrow_white.png' style='height: 28rpx;width:16rpx;padding-left: 8rpx;'></image>
+    </view>
+    <view class="berry-2">
+      <text>{{allberry}}</text>
+      <text style='font-size:30rpx;margin-left: 8rpx;'>果粒值</text>
+    </view>
+  </view>
+  <view wx:if="{{hasBerry && getUser}}">
+    <!--存在积分记录-->
+    <!-- 果粒值明细 -->
+    <view class="berry-info" wx:for="{{berryValueI}}" wx:key="item">
+      <view>
+        <view class="info-1">{{item.obtainType}}</view>
+        <view class='info-2'>{{item.createTime}}</view>
+      </view>
+      <view class="{{item.symbol ? 'p-m1' : 'p-m2'}}">{{item.growthValue}}点</view>
+    </view>
+  </view>
+  <!--无果粒值-->
+  <view wx:if="{{!hasBerry  && getUser && isReady }}">
+    <view class="no-berry">
+      <image src="/source/images/home_noorders_defaultpage.png"></image>
+      <text>您还没有果粒值哦~</text>
+    </view>
+  </view>
+</view>

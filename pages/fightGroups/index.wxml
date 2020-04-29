@@ -1,0 +1,64 @@
+<import src="/pages/template/index.wxml" />
+<view class="container" wx:if='{{isReady}}'>
+	<view class='c-t-box' wx:if="{{goodsList}}">
+		<label class='img-middle'>
+			<image class='icon-location' src='/source/images/home_icon_change.png'></image>
+		</label>
+		<view bindtap='navigateselfExtractStore' hover-class='none' class='storeName'>提货门店:{{store.storeName}}</view>
+		<label class='img-middle'>
+			<image class='icon-more' src='/source/images/icon_triangle_right.png'></image>
+		</label>
+	</view>
+	<view class='c-d-box'>
+		<view class='item-box' bindtap='navigateToDetail' data-id="{{item.id}}" data-activityID="{{item.activityID}}" wx:for="{{goodsList}}" wx:key="{{item.id}}">
+			<view class='item-t'>
+				<image class='item-img' src='{{picUrl}}{{item.groupHeadPic}}' mode='widthFix'></image>
+				<view class='corner-mark' style="background-image:url('{{cornermark_bg}}');">{{item.groupSize}}人团</view>
+			</view>
+			<view class='item-d'>
+				<view class='f-t'>{{item.name}}</view>
+				<!-- <view >{{item.subTitle}}</view> -->
+				<view class='f-des'>{{item.spec}}</view>
+				<view class='f-p-box'>
+					<view class='p-wrap'>
+						<view class='p-box'>
+							<!-- <label class='yen'>¥</label> -->
+							<text class='p-big'>¥ {{item.groupPrice[0]}}</text>
+							<text class='p-small'>.{{item.groupPrice[1]}}</text>
+							<text class='del-p'>¥{{item.price}}</text>
+							<text class='sale-num'>·已团{{item.sellCount}}件</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class='btn_pay' style="background-image:url('{{btn_pay_bg}}');" data-id="{{item.id}}" data-activityID="{{item.activityID}}" catchtap='toDetailPage'>
+				去拼团
+				<label>
+					<image class='icon-next' src='/source/images/icon_btn_next_white.png'></image>
+				</label>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 城市未开通拼团门店 -->
+	<view class="{{ cityNoStore ? 'no-result' : 'no-result hidden'}}">
+		<image class="icon-citynostore" src='/source/images/home_nostore_defaultpage2.png'></image>
+		<!-- <view class='txt-min'>该地址附近暂无百果园门店~</view> -->
+		<view class='txt-middle'>已有{{callCount}}人召唤百果园来这里开店~</view>
+
+		<button class="{{disable ? 'call-btn off': '＇call-btn'}}" bindtap='callBGY' disabled='{{disable}}'>我也来召唤</button>
+	</view>
+
+	<!-- 附近没有拼团且有货的门店，切换门店 -->
+	<view class="{{goodsList.length==0 ? 'no-result' : 'no-result hidden'}}">
+		<image class="icon-nostore" src='/source/images/home_nostore_defaultpage.png'></image>
+		<view class='txt-min'>部分门店不参加拼团活动~</view>
+		<!-- <view class='txt-min'></view> -->
+
+		<view class='call-btn' bindtap='navigateselfExtractStore' data-type="noGoods">换个地址试试</view>
+	</view>
+</view>
+
+<!-- 蒙层 -->
+<template is="mask" data='{{prevent}}' />

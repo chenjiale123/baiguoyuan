@@ -1,0 +1,230 @@
+<import src="/pages/template/index.wxml"/>
+<view class="container">
+  <view class='status-box'>
+    <view class="{{orderStatus == 2 ? 'tab active' : 'tab'}}" data-status="2" data-id="1" bindtap='bindOrderTap'>待付款</view>
+    <view class="{{orderStatus == 6 ? 'tab active' : 'tab'}}" data-status="6" data-id="2" bindtap='bindOrderTap'>待成团</view>
+    <!-- <view class='tab'>已成团</view> -->
+    <view class="{{orderStatus == 7 ? 'tab active' : 'tab'}}" data-status="7" data-id="3" bindtap='bindOrderTap'>待提货</view>
+    <view class="{{orderStatus == 1 ? 'tab active' : 'tab'}}" data-status="1" data-id="0" bindtap='bindOrderTap'>全部</view>
+    
+  </view>
+
+  <view class='order-box'>
+    <!-- 全部 -->
+    <view class="{{!noOrderShowFlag && orderStatus == 1 ? 'all-order-box' : 'all-order-box hidden'}}">
+      <block wx:key="{{index}}" wx:for="{{allOrderList}}">
+        <view class='item-order' data-orderid="{{item.goodsOrderID}}" data-payid="{{item.payOrderID}}" data-paystatus="{{item.payStatus}}" bindtap='toPTorderPage'>
+          <view class='it-t'>
+            <label class='img-middle'>
+              <image class='icon-serial' src='/source/images/icon_serialnumber.png'></image>
+            </label>
+            <view class="o-num">{{item.goodsOrderNum}}</view>
+            <view class='o-status noborder'>
+              <text>{{orderFlowState[item.orderFlowState] != '待付款' ? 
+                  orderFlowState[item.orderFlowState] : 
+                  timeDate[item.payOrderID] && timeDate[item.payOrderID] != '00:00:00' ?
+                              orderFlowState[item.orderFlowState] : '交易取消'  }}</text>
+            </view>
+          </view>
+          
+          <view class='it-img'>
+            <label class='img-middle'>
+              <image class='icon-img' src='{{picUrl}}{{item.goodsList[0].headPic}}'></image>
+            </label>
+            <view class='img-r'>
+              <view class='r-t'>
+                <view class='r-tit'>{{item.goodsList[0].goodsName}}</view>
+                <view class='r-des'>{{item.goodsList[0].subTitle}}</view>
+                <view class='r-per'>{{item.goodsList[0].spec}}</view>
+              </view> 
+              <view class='p-box'>
+                <label class='yen'>¥</label>
+                <text class='p-big'>{{item.goodsList[0].groupPrice[0]}}</text>
+                <label class='p-small'>.{{item.goodsList[0].groupPrice[1]}}</label>
+                <label class='del-p'>¥{{item.goodsList[0].originalPrice}}</label>
+              </view>
+            </view>
+          </view>
+          <view class='it-store'>提货门店 : <text class='s-c'>{{item.store.shortName}}</text></view>
+          <!-- 待付款 -->
+          <view class="{{item.orderFlowState == 'WAIT_PAY' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>付款剩余时间：{{timeDate[item.payOrderID]}}</view>
+            <view class="{{timeDate[item.payOrderID] == '00:00:00' ? 'pay-btn hidden' : 'pay-btn'}}">立即付款</view>
+          </view>
+          <!-- 待成团 -->
+          <view class="{{item.orderFlowState == 'GROUPBUY_PROCESS' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>成团剩余时间：{{timeDate[item.payOrderID]}}</view>
+            <button catchtap='stopNavigate' data-goodstitle="{{item.goodsList[0].groupShareTitle}}" data-goodsid="{{item.goodsList[0].goodsID}}" data-sharepic="{{item.goodsList[0].groupSharePic}}" data-goodsorderid="{{item.goodsOrderID}}" class="{{timeDate[item.payOrderID] == '00:00:00' ? 'share-btn hidden':'share-btn'}}" open-type='share'>
+              <label class='img-middle'>
+                <image class="icon-share" src='/source/images/icon_share.png'></image>
+              </label>
+              <text>邀请好友</text>
+            </button>
+          </view>
+          <!-- 待提货 -->
+          <view class="{{item.orderFlowState == 'WAIT_PICKUP' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>提货码：{{item.takeCode}}</view>
+            <!-- <view class='buy-again'>确认收货</view> -->
+            <image class='image' src='/source/images/icon_arrow2.png'></image>
+          </view>
+          <!-- 已提货 -->
+          <view class="{{item.orderFlowState == 'PICKED_UP' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>提货时间：{{item.receiveTime}}</view>
+            <view class='buy-again' catchtap="buyAgain" data-goodsid="{{item.goodsList[0].goodsID}}" data-activityid="{{item.goodsList[0].activityID}}">再次购买</view>
+          </view>
+          <!-- 已取消 -->
+          <view class="{{item.orderFlowState == 'CANCELED' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>取消时间：{{item.lastUpdate}}</view>
+            <view class='buy-again' catchtap="buyAgain" data-goodsid="{{item.goodsList[0].goodsID}}" data-activityid="{{item.goodsList[0].activityID}}">重新购买</view>
+          </view>
+          <!-- 已退款 -->
+          <view class="{{item.orderFlowState == 'REFUNDED' ? 'it-b' : 'it-b hidden'}}">
+            <view class='pay-time'>退款时间：{{item.lastUpdate}}</view>
+            <view class='buy-again' catchtap="buyAgain" data-goodsid="{{item.goodsList[0].goodsID}}" data-activityid="{{item.goodsList[0].activityID}}">再次购买</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 待付款 -->
+    <view class="{{!noOrderShowFlag && orderStatus == 2 ? 'pay-order-box' : 'pay-order-box hidden'}}">
+      <block wx:key="{{index}}" wx:for="{{noPayOrderList}}">
+        <view class='item-order' data-orderid="{{item.goodsOrderID}}" data-payid="{{item.payOrderID}}" data-paystatus="{{item.payStatus}}" bindtap='toPTorderPage'>
+          <view class='it-t'>
+            <label class='img-middle'>
+              <image class='icon-serial' src='/source/images/icon_serialnumber.png'></image>
+            </label>
+            <view class="o-num">{{item.goodsOrderNum}}</view>
+            <view class='o-status'>
+              <text>{{item.goodsList[0].groupSize}}人团</text>
+            </view>
+          </view>
+          
+          <view class='it-img'>
+            <label class='img-middle'>
+              <image class='icon-img' src='{{picUrl}}{{item.goodsList[0].headPic}}'></image>
+            </label>
+            <view class='img-r'>
+              <view class='r-t'>
+                <view class='r-tit'>{{item.goodsList[0].goodsName}}</view>
+                <view class='r-des'>{{item.goodsList[0].subTitle}}</view>
+                <view class='r-per'>{{item.goodsList[0].spec}}</view>
+              </view> 
+              <view class='p-box'>
+                <label class='yen'>¥</label>
+                <text class='p-big'>{{item.goodsList[0].groupPrice[0]}}</text>
+                <label class='p-small'>.{{item.goodsList[0].groupPrice[1]}}</label>
+                <label class='del-p'>¥{{item.goodsList[0].originalPrice}}</label>
+              </view>
+            </view>
+          </view>
+          <view class='it-store'>提货门店 : <text class='s-c'>{{item.store.shortName}}</text></view>
+          <view class='it-b'>
+            <view class='pay-time'>付款剩余时间：{{timeDate[item.payOrderID]}}</view>
+            <view class="{{timeDate[item.payOrderID] == '00:00:00' ? 'pay-btn hidden' : 'pay-btn'}}">立即付款</view>
+          </view>
+        </view>
+      </block>     
+    </view>
+
+    <!-- 待成团 -->
+    <view class="{{!noOrderShowFlag && orderStatus == 6 ? 'pend-mass-box' : 'pend-mass-box hidden'}}">
+      <block wx:for="{{noGroupOrderList}}" wx:key="{{index}}">
+        <view class='item-order' data-orderid="{{item.goodsOrderID}}" data-payid="{{item.payOrderID}}" data-paystatus="{{item.payStatus}}" bindtap='toPTorderPage'>
+          <view class='it-t'>
+            <label class='img-middle'>
+              <image class='icon-serial' src='/source/images/icon_serialnumber.png'></image>
+            </label>
+            <!-- <view class="o-num">{{item.goodsOrderNum}}</view> -->
+            <view class="o-num">{{item.goodsOrderNum}}</view>
+            <view class='o-status'>
+              <view class='o-s-total'>{{item.goodsList[0].groupSize}}人团</view>
+              <view class='o-s-num'>差{{item.groupInfo.groupSize - item.groupInfo.currentCount}}人</view>
+            </view>
+          </view>
+          <view class='it-img'>
+            <label class='img-middle'>
+              <image class='icon-img' src='{{picUrl}}{{item.goodsList[0].headPic}}'></image>
+            </label>
+            <view class='img-r'>
+              <view class='r-t'>
+                <view class='r-tit'>{{item.goodsList[0].goodsName}}</view>
+                <view class='r-des'>{{item.goodsList[0].subTitle}}</view>
+                <view class='r-per'>{{item.goodsList[0].spec}}</view>
+              </view> 
+              <view class='p-box'>
+                <label class='yen'>¥</label>
+                <text class='p-big'>{{item.goodsList[0].groupPrice[0]}}</text>
+                <label class='p-small'>.{{item.goodsList[0].groupPrice[1]}}</label>
+                <label class='del-p'>¥{{item.goodsList[0].originalPrice}}</label>
+              </view>
+            </view>
+          </view>
+          <view class='it-store'>提货门店 : <text class='s-c'>{{item.store.shortName}}</text></view>
+          
+          <view class='it-b'>
+            <view class='pay-time'>成团剩余时间：{{timeDate[item.payOrderID]}}</view>
+            <button catchtap='stopNavigate' data-goodstitle="{{item.goodsList[0].groupShareTitle}}" data-goodsid="{{item.goodsList[0].goodsID}}" data-sharepic="{{item.goodsList[0].groupSharePic}}"  data-goodsorderid="{{item.goodsOrderID}}" open-type='share' class="{{timeDate[item.payOrderID] == '00:00:00' ? 'share-btn hidden':'share-btn'}}">
+              <label class='img-middle'>
+                <image class="icon-share" src='/source/images/icon_share.png'></image>
+              </label>
+              <text>邀请好友</text>
+            </button>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 待提货 -->
+    <view class="{{!noOrderShowFlag && orderStatus == 7 ? 'lift-order-box' : 'lift-order-box hidden'}}">
+      <block wx:for="{{noLiftOrderList}}" wx:key="{{index}}">
+        <view class='item-order' data-orderid="{{item.goodsOrderID}}" data-payid="{{item.payOrderID}}" data-paystatus="{{item.payStatus}}" bindtap='toPTorderPage'>
+          <view class='it-t'>
+            <label class='img-middle'>
+              <image class='icon-serial' src='/source/images/icon_serialnumber.png'></image>
+            </label>
+            <view class="o-num">{{item.goodsOrderNum}}</view>
+            <view class='o-status'>
+              <text>{{item.groupInfo.groupSize}}人团</text>
+            </view>
+          </view>
+          <view class='it-img'>
+            <label class='img-middle'>
+              <image class='icon-img' src='{{picUrl}}{{item.goodsList[0].headPic}}'></image>
+            </label>
+            <view class='img-r'>
+              <view class='r-t'>
+                <view class='r-tit'>{{item.goodsList[0].goodsName}}</view>
+                <view class='r-des'>{{item.goodsList[0].subTitle}}</view>
+                <view class='r-per'>{{item.goodsList[0].spec}}</view>
+              </view> 
+              <view class='p-box'>
+                <label class='yen'>¥</label>
+                <text class='p-big'>{{item.goodsList[0].groupPrice[0]}}</text>
+                <label class='p-small'>.{{item.goodsList[0].groupPrice[1]}}</label>
+                <label class='del-p'>¥{{item.goodsList[0].originalPrice}}</label>
+              </view>
+            </view>
+          </view>
+          <view class='it-store'>提货门店 : <text class='s-c'>{{item.store.shortName}}</text></view>
+          
+          <view class='it-b'>
+            <view class='pay-time'>提货码：{{item.takeCode}}</view>
+            <!-- <view class='buy-again'>确认收货</view> -->
+            <image class='image' src='/source/images/icon_arrow2.png'></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 没有订单 -->
+  <view class="{{noOrderShowFlag ? 'no-result' : 'no-result hidden'}}">
+    <image class='icon-noorder' src='/source/images/home_noorders_defaultpage.png'></image>
+    <view class='txt'>您还没有相关订单</view>
+    <template is="refund" />
+  </view>
+  
+</view>
+<!-- 蒙层 -->
+<template is="mask" data="{{prevent}}"/>

@@ -1,0 +1,59 @@
+page{min-height:100%;} 
+.container{height:auto;min-height:100%;} 
+.icon-tuikuan{width: 228rpx;height: 28rpx;}
+.icon-location{width: 32rpx;height: 32rpx;margin-right: 15rpx;}
+.icon-more{width: 10rpx;height: 20rpx;margin-left: 16rpx;}
+.icon-self-store{margin-left: 40rpx;}
+.c-t-box{font-size: 28rpx;color: rgb(51,51,51);width: 100%;min-height:88rpx;line-height:88rpx;display: flex;justify-content:center;
+border-bottom:1rpx solid rgb(244,244,244);box-shadow: 0 3rpx 20rpx rgb(244,244,244);padding:0 30rpx;position:fixed;
+top:0;z-index:99;background:#FFF;}
+.t-r{flex:1;display:flex;justify-content:flex-end;}
+.c-d-box{width:95%;margin-top: 108rpx;}
+.item-box{position:relative;border-bottom:1rpx solid rgb(244,244,244);box-shadow:0 0 20rpx #dcdcdc;border-radius:20rpx;margin-bottom: 24rpx;}
+.item-t{display: flex;justify-content: center;position: relative;background:rgb(220,220,220);border-top-left-radius:20rpx;border-top-right-radius:20rpx;}
+.item-img{width:100%;border-top-left-radius:20rpx;border-top-right-radius:20rpx;}
+.corner-mark{position: absolute;left: 0;top:0;width:120rpx;height: 46rpx;background-size: cover;font-size: 28rpx;color:#FFF;text-align: center;line-height: 46rpx;}
+.item-d{margin:20rpx 20rpx 0 20rpx; }
+.f-t{font-size: 34rpx;color: rgb(51,51,51);font-weight: 600;}
+.f-des{font-size:24rpx;color: rgb(153,153,153);margin-top: 4rpx;}
+.p-wrap{display: flex;margin: 12rpx 0 11rpx;}
+/* .f-p-box{padding-bottom: 20rpx;} */
+.p-box{color: rgb(255,138,0);display: flex;align-items: baseline;}
+.icon_pintuanjia{width: 24rpx;height: 60rpx;margin-right: 12rpx;}
+.yen{margin-right: 5rpx;font-size: 30rpx;}
+.p-small{font-size: 34rpx;}
+.yen,.p-small{display: flex;flex-direction: column;justify-content:flex-end;margin-bottom: 6rpx;}
+.p-big{font-size: 52rpx;font-weight: 600}
+.del-p{font-size: 24rpx;color: rgb(51,51,51);margin-left: 30rpx;display: flex;flex-direction: column;
+justify-content: flex-end;margin-bottom: 5px;text-decoration: line-through}
+.per{font-size:24rpx;color:rgb(153,153,153);
+margin-left:24rpx;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:6px;
+}
+.sale-num{
+  font-size: 24rpx;color: rgb(156,156,156);margin-left: 30rpx;display: flex;flex-direction: column;
+justify-content: flex-end;margin-bottom: 5px;
+}
+.btn_pay{position: absolute;right: 0;bottom: 0;width:184rpx;height: 84rpx;text-align:center;line-height: 84rpx;font-size: 30rpx;color: #FFF;
+background-size: cover;display: flex;justify-content: center;align-items: center;margin-bottom:10rpx;margin-right: 10rpx;}
+.icon-next{width: 12rpx;height: 20rpx;margin-left: 10rpx;}
+
+/*没有自提门店*/
+.no-result{width:100%;margin-top: 49rpx;display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.icon-citynostore{width: 400rpx;height: 400rpx;margin-top: 7rpx;}
+.icon-nostore{width: 393rpx;height: 344rpx;}
+.txt-min{margin-top: 8rpx;font-size: 26rpx;color: rgb(102,102,102)}
+.txt-middle{font-size:30rpx;color: rgb(38, 38, 38)}
+.call-btn{font-size: 30rpx;color: rgb(55,210,96);height: 70rpx;line-height:70rpx;width: 360rpx;text-align: center;border:1px solid rgb(55,210,96);border-radius: 70rpx;margin-top: 79rpx;background: #fff;}
+.download{padding:0 77rpx;height:70rpx;line-height:70rpx;border-radius:70rpx;font-size: 30rpx;color: #37D260;border: 1rpx solid #37D260;margin-top: 84rpx;}
+.sc{font-size: 24rpx;color: rgb(153,153,153);margin-top: 6rpx;}
+.off {background: rgb(153, 153, 153)!important;color: #FFF!important;border:1px solid rgb(153, 153, 153);}
+
+.storeName{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 600;
+  max-width: 420rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

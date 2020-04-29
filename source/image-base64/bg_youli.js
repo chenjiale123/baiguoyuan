@@ -1,0 +1,2 @@
+var bg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAYCAMAAACRH25gAAAANlBMVEUAAAD5iwv/kBP5iwz5jQ35iwv4igz4iwz6igz4igv5igz4iwz5iwz4iwz/kiT/qiv5iwv4igvo/NSiAAAAEXRSTlMA8xrZS7ablmvjx7+CbgcGLhlKoHUAAAB/SURBVDjLpdQ7DoNAEATRmtllF/Mx7vtf1hKyhHCCaF5eQSfNYat9LqELUYYx+ZP96C61U/5eQndEPdqcdNfKz+el+yq7dFpF7nsnWRrAIlNChkwjdLkGtpCrUGUL+pN4lq1QZBsI2UbkS2Rr+HHkg7jixyt2HBU7bokRn6/3CzqaVqQ8IhYUAAAAAElFTkSuQmCC";
+module.exports = { bg };

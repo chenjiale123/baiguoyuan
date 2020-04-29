@@ -1,0 +1,10 @@
+<view class="container">
+  <image class="icon-disconnect" src="/source/images/defaultpage_positioning@2x.png"></image>
+  <view class="f-h2">您未开启定位服务,无法获取当前位置信息</view>
+  <view class="refresh-btn" bindtap="bindLocTap">去定位</view>
+  <!--弹窗-->
+  <view class="{{remindShowFlag ? 'mask' : 'mask hidden'}}"></view>
+  <view class="{{remindShowFlag ? 'pop' : 'pop hidden'}}">
+    <image class="icon-remind" src="/source/images/bg_remind.png"></image>
+  </view>
+</view>

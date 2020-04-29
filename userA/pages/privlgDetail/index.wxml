@@ -1,0 +1,69 @@
+<view class="container">
+  <view class='c-t'>
+    <image class='icon-img' src='{{imgArr[currentLegal]}}'></image>
+    
+     <view class='icon-txt'>{{titleArr[currentLegal]}}</view> 
+  </view>
+  <view class='c-m'>
+    <view class='c-m-t'>
+      <view class='line'></view>
+      <text class='tit'>权益说明</text>
+    </view>
+    <!--会员专享价  -->
+    <view class="{{currentLegal == 0 ? 'c-m-c' : 'c-m-c hidden'}}">
+      享有果品专享会员价，可在百果园线下门店、百果园App、微信商城、微信小程序进行购买；具体以百果园活动内容为准。
+    </view>
+    <!-- App瞬间退款 -->
+    <view class="{{currentLegal == 1 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view>在百果园线下门店、百果园App、微信商城、微信小程序购买可享受不好吃三无退货服务。</view>
+      <view>（在百果园App购物可享受不好吃瞬间退款服务）。</view>            
+    </view>
+    <!-- 积分商城专区 -->
+    <view class="{{currentLegal == 2 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view class="{{tapLevelId == 1 ? '' : 'hidden'}}">在百果园线下门店、百果园App、微信商城、微信小程序消费果品获得的会员积分，可通过关注百果园微信公众号-->会员中心-->积分兑换/好礼多多进行兑换，可在普卡会员专区兑换好礼。</view>
+      <view class="{{tapLevelId == 2 ? '' : 'hidden'}}">在百果园线下门店、百果园App、微信商城、微信小程序消费果品获得的会员积分，可通过关注百果园微信公众号-->会员中心-->积分兑换/好礼多多进行兑换，可兑换银卡会员专享积分好礼。</view>
+      <view class="{{tapLevelId == 3 ? '' : 'hidden'}}">在百果园线下门店、百果园App、微信商城、微信小程序消费果品获得的会员积分，可通过关注百果园微信公众号-->会员中心-->积分兑换/好礼多多进行兑换，可兑换金卡会员专享积分好礼。</view>
+      <view class="{{tapLevelId == 4 ? '' : 'hidden'}}">在百果园线下门店、百果园App、微信商城、微信小程序消费果品获得的会员积分，可通过关注百果园微信公众号-->会员中心-->积分兑换/好礼多多进行兑换，可兑换钻石会员专享积分好礼。</view>
+    </view>
+    <!-- 充值返现 -->
+    <view class="{{currentLegal == 3 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view class="{{tapLevelId == 2 ? '' : 'hidden'}}">银卡会员可参与百果园每季度的充值返现活动，充值额外返现至少2%，活动日期及内容以门店及App公示为准。</view>
+      <view class="{{tapLevelId == 3 ? '' : 'hidden'}}">金卡会员可参与百果园每季度的充值返现活动，充值额外返现至少3%，活动日期及内容以门店及App公示为准。</view>
+      <view class="{{tapLevelId == 4 ? '' : 'hidden'}}">钻石卡会员可参与百果园每季度的充值返现活动，充值额外返现至少4%，活动日期及内容以门店及App公示为准。</view>
+    </view>
+
+    <!-- 升级券包 -->
+    <view class="{{currentLegal == 4 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view class="{{tapLevelId == 2 ? '' : 'hidden'}}">会员消费获取的果粒值达到升级门槛后将自动升级，升级成功后系统会发放升级优惠券包，普卡会员升级银卡会员后可获赠9折优惠券包。</view>
+      <view class="{{tapLevelId == 3 ? '' : 'hidden'}}">会员消费获取的果粒值达到升级门槛后将自动升级，升级成功后系统会发放升级优惠券包，银卡会员升级金卡会员后可获赠8.5折优惠券包。</view>
+      <view class="{{tapLevelId == 4 ? '' : 'hidden'}}">会员消费获取的果粒值达到升级门槛后将自动升级，升级成功后系统会发放升级优惠券包，金卡会员升级钻石会员后可获赠8折优惠券包。</view>
+    </view>
+
+    <!-- 生日特权 -->
+    <view class="{{currentLegal == 5 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view class="{{tapLevelId == 1 ? '' : 'hidden'}}">提前完善会员信息，在生日当天会员账户可获赠9折生日优惠券，可以在百果园线下门店、百果园App、微信商城、微信小程序消费使用。</view>
+      <view class="{{tapLevelId == 2 ? '' : 'hidden'}}">提前完善会员信息，在生日当天会员账户可获赠9折生日优惠券，可以在百果园线下门店、百果园App、微信商城、微信小程序消费使用。</view>
+      <view class="{{tapLevelId == 3 ? '' : 'hidden'}}">提前完善会员信息，在生日当天会员账户可获赠8.5折生日优惠券，可以在百果园线下门店、百果园App、微信商城、微信小程序消费使用。</view>
+      <view class="{{tapLevelId == 4 ? '' : 'hidden'}}">提前完善会员信息，在生日当天会员账户可获赠8折生日优惠券，可以在百果园线下门店、百果园App、微信商城、微信小程序消费使用。</view>
+    </view>
+
+    <!-- 专享活动 -->
+    <view class="{{currentLegal == 6 ? 'c-m-c' : 'c-m-c hidden'}}">
+      <view class="{{tapLevelId == 2 ? '' : 'hidden'}}">银卡会员可参与百果园每月定期举行的会员等级专享优惠活动，具体活动日期及内容以百果园门店及App公示为准。</view>
+      <view class="{{tapLevelId == 3 ? '' : 'hidden'}}">金卡会员可参与百果园每月定期举行的会员等级专享优惠活动，具体活动日期及内容以百果园门店及App公示为准。</view>
+      <view class="{{tapLevelId == 4 ? '' : 'hidden'}}">钻石会员可参与百果园每月定期举行的会员等级专享优惠活动，具体活动日期及内容以百果园门店及App公示为准。</view>
+    </view>
+
+    <!-- 专享券包 -->
+    <view class="{{currentLegal == 7 ? 'c-m-c' : 'c-m-c hidden'}}">
+      不同等级会员月度专享福利礼包，每月初可以进行领取，领取成功后会自动送达会员账户，请及时消费使用；升级次月后才享有此权益。
+    </view>
+  </view>
+
+  <navigator bindtap='toExchange' class="{{currentLegal == 2 ? 'c-b' : 'c-b hidden'}}">去兑换</navigator>
+  <navigator class="{{currentLegal == 3 ? 'c-b' : 'c-b hidden'}}" bindtap='toDeposit'>去充值</navigator>
+  <navigator class="{{currentLegal == 4 || currentLegal == 6 ? currentLevelId >= tapLevelId ? 'c-b off' : 'c-b' : 'c-b hidden'}}" bindtap="toIndex">{{currentLevelId >= tapLevelId ? '已享有':'升级享有'}}</navigator>
+  <view class="{{currentLegal == 7 ? monthReceiveStatus == 1 ? 'c-b off' : 'c-b' : 'c-b hidden'}}" bindtap='bindReceiveTap'>{{monthReceiveStatus==0 ? '领取礼包' : monthReceiveStatus == 1 ? '已领取' : '升级享有'}}       </view>
+  <navigator class="{{currentLegal == 5 ? 'c-b' : 'c-b hidden'}}" bindtap='toSetting'>去设置</navigator>
+  <view class="{{currentLegal == 0 || currentLegal == 1 ? 'c-b off' : 'c-b off hidden'}}">已享有</view>
+</view>

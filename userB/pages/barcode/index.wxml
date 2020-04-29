@@ -1,0 +1,23 @@
+ <!--弹窗-->
+  <view class="container pop">
+    <view style="background-image:url('{{bg_pop}}');" class="pop-bg">
+      <view class="pop-up">
+        <view style="background-image:url('{{popClass == 'A' ? bg_blue_small : bg_orange_small}}');" class="up-bg">
+          <view class="{{currCouponWay == 1 || currCouponWay == 3 ? 'price' : 'hidden'}}"><text class="yen">¥</text>{{currCouponValue/100}}</view>
+          <view class="{{currCouponWay == 2 || currCouponWay == 4 ? 'discount' : 'hidden'}}">{{currCouponValue/10}}<text class="yen">折</text></view>
+          <view class="f-h2">{{popClass == 'A' ? '门店券' : '通用券'}}</view>
+        </view>
+        <view class="up-f-h1">{{currCouponName}}</view>
+        <view class="up-f-h3">{{currLimitValueStr}}</view>
+      </view>
+      <view class="pop-down">
+        <text class="{{popClass == 'A' ? 'down-f-h3' : 'down-f-h3  hidden'}}">门店券,请在门店结算时使用</text>
+        <text class="{{popClass == 'B' ? 'down-f-h3' : 'down-f-h3  hidden'}}">通用券,app门店结算均可使用</text>
+        <view class='coupon-code'>{{couponCode}}</view>
+        <view class="code">
+          <canvas canvas-id="barcode1" disable-scroll="true"/>
+        </view>
+        
+      </view>
+    </view>
+  </view>

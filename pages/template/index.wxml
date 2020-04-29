@@ -1,0 +1,103 @@
+<!-- 商品信息 -->
+<template name="msgItem">
+  <view class='take-sale'>
+    <image src='{{obj.pic}}' class='sale-img'></image>
+    <view class='sale-info'>
+      <view class='sale-i1'>
+        <view class='i-1'>{{obj.goodsName}}</view>
+        <!-- <view class='i-2'>{{obj.subTitle}}</view> -->
+        <view class='i-3'>{{obj.spec}}</view>
+        <view class='top-tip3'>
+          <view class='tip3-3' wx:if="{{obj.show}}">{{obj.groupSize}}人团</view>
+        </view>
+      </view>
+      <view class='p-Box'>
+        <view class='box'>
+          <label class="{{obj.color? 'yen s-b':'yen s-y'}}">¥</label>
+          <text class="{{obj.color ? 'p-big s-b':'p-big s-y'}}">{{obj.price[0]}}</text>
+          <label class="{{obj.color ? 'p-small s-b' : 'p-small s-y'}}">.{{obj.price[1]}}</label>
+          <label class='del-p'>¥{{obj.oriPrice}}</label>
+        </view>
+        <view class='sale-out' wx:if='{{obj.saleOut}}'>已售罄</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!-- 不好吃瞬间退款 -->
+<template name="refund">
+  <view class='footer'>
+    <view class='tip-4'>
+      <view class='line'></view>
+      <view class='dot'></view>
+      <view class='f-txt'>下载百果园App</view>
+      <view class='dot'></view>
+      <view class='line'></view>
+    </view>
+    <view class='tip-5'>不好吃，App瞬间退款</view>
+  </view>
+</template>
+
+<!-- 成团次日自提 -->
+<template name="template-3">
+  <view class='take-info t2' wx:if='{{!isComposition}}'>
+    <view>成团后,次日自提</view>
+    <view class='t3'>自提有效期3天，超出有效期自动退款按原路返回</view>
+  </view>
+</template>
+
+<!-- 提示条 -->
+<template name="tips-line">
+  <view class='tips-line'>
+    <view><image class='line-img' src="{{picChange}}"></image>不好吃瞬间退款</view>
+    <view><image class='line-img' src="{{picChange}}"></image>全球直采</view>
+    <view><image class='line-img' src="{{picChange}}"></image>放心品控</view>
+  </view>
+</template>
+
+<template name="tips-content">
+  <view class='tips-top'>
+    <view class='tips-horizontalLine'></view>
+    <view class='tips-topcontent'>百果园服务说明</view>
+    <view class='tips-horizontalLine'></view>
+  </view>
+  <view style='margin-top: 10rpx;'>
+    <view class='tips-tip'>
+      <image src='/source/images/icon_shunjiantuikuan.png' class='tips-image'></image>
+      <view>
+        <view class='tip-title'>不好吃瞬间退款</view>
+        <view class='tip-content'>
+          <view>支持门店和App订单，不新鲜、不满意、不好吃、</view>
+          <view>无理由，48小时内瞬间退款</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tips-tip'>
+      <image src='/source/images/icon_quanqiuzhicai.png' class='tips-image'></image>
+      <view style='flex:1'>
+        <view class='tip-title'>全球直采 “真正的吃遍全球”</view>
+        <view class='tip-content'>
+          <view>全球基地 全球最大零售网络</view>
+          <view>全国15大配送品控中心，可满足5000家门店每日的果品配送需求</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tips-tip'>
+      <image src='/source/images/icon_fangxinpinkong.png' class='tips-image'></image>
+      <view>
+        <view class='tip-title'>品控质检“真正的安全放心”</view>
+        <view class='tip-content'>
+          <view>八大环节 重重检验筛选，为安全把关</view>
+          <view>果品标准体系“四度一味一安全”</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!-- 蒙层模板 -->
+<template name="mask">
+  <view class="prevent-screen" hidden="{{!prevent}}"></view>
+</template>

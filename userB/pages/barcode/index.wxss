@@ -1,0 +1,19 @@
+.hidden{display: none!important}
+.container{background: #F2F2F2;}
+.price,.discount{font-size:100rpx;font-weight:600;height:50px;margin-top:-20rpx;}
+.yen{font-size:36rpx;margin:0 10rpx;}
+.f-h2{font-size: 30rpx;margin-top:20rpx;}
+/*通用券弹窗*/
+.pop{width:100%;display: flex;flex-direction: column;align-items: center;}
+.pop-bg{margin-top:45rpx;width:90%;height:810rpx;background-size: cover;}
+.pop-up{height:57%;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.up-bg{width:268rpx;height:196rpx;background-size:cover;color:#FFF;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.up-f-h1{font-size:34rpx;color: #000;margin-top:30rpx;}
+.up-f-h3{font-size:26rpx;color: rgb(136,136,136);margin-top:8rpx;}
+.pop-down{height:43%;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+.down-f-h3{font-size:26rpx;color: rgb(136,136,136);margin-bottom:10rpx;}
+.code{width:600rpx;min-width: 300px;height:164rpx;}
+.coupon-code{font-size:26rpx;color:rgb(51,51,51);margin-bottom:5px;}
+ canvas{width:600rpx;min-width: 300px;height:164rpx;} 
+/*.code{display: flex;flex-direction:row;justify-content: center;}*/
+.close{width:90rpx;height:90rpx;margin-top:99rpx;}

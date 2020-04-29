@@ -1,0 +1,112 @@
+<!--index.wxml-->
+<view class="container">
+  <!--登陆部分 -->
+  <view class="login">
+    <view class="btnToLogin" style="background-image:url('{{home_btn_bg}}');" wx:if="{{isReady}}" hover-class="none" bindtap='tapMemberInfo'>
+      <view class='user-info'>
+        <image src='{{imgUrl}}' style='height:96rpx; width:96rpx;  border-radius: 50%;' catchtap='navigateModifyUserInfo'></image>
+        <view class='user-name'>
+          <view>{{userName}}</view>
+          <view style='margin-top:8rpx;font-weight:600;' wx:if='{{!isLogin}}'>消费成功即可成为会员，享特权！</view>
+          <view style='font-size: 28rpx;margin-top:8rpx;' class='level-box' wx:if='{{isLogin}}'>
+            <view>{{levelName}}</view>
+            <view class='mem-privlg'>
+              <view>会员权益</view>
+              <view class='arr-right'></view>
+            </view>
+          </view>
+
+        </view>
+        <!-- <view class='member-rules' wx:if='{{isLogin}}' catchtap='navigateInfo'>会员规则</view> -->
+      </view>
+      <view class='start-travel' wx:if='{{!isLogin}}' catchtap="tapLoginBtn">立即开启果味之旅
+        <image src='/source/images/icon_arrow_white.png' style='height:18rpx;width:12rpx;'></image>
+      </view>
+      <view class='member-code' wx:if='{{isLogin}}' catchtap='navigateMemberCode'>
+        <image src='/source/images/btn_code.png' style='width: 54rpx;height: 54rpx;'></image>
+      </view>
+    </view>
+
+    <!--账户信息-->
+    <view class="vip-info" wx:if="{{isReady}}">
+      <view class="info" bindtap="navigatoVipInfo">
+        <view class="info-detail">
+          <text class="info-detail{{isLogin ? 2 : 1 }}">{{integralBalance}}</text>分</view>
+        <view class="menber-info">积分
+          <image src="/source/images/icon_btn_next_gray.png" class="vip-info-next-btn"></image>
+        </view>
+      </view>
+      <view class="info ia" bindtap="navigateToCoupon">
+        <view class="info-detail">
+          <text class="info-detail{{isLogin ? 2 : 1 }}">{{couponAmount}}</text>张</view>
+        <view class="menber-info">优惠券
+          <image src="/source/images/icon_btn_next_gray.png" class="vip-info-next-btn"></image>
+        </view>
+      </view>
+      <view class="info " bindtap="navigateToDeposit">
+        <view class='gift' style="background-image:url('{{bg_percen}}');">赠送</view>
+        <view class="info-detail">
+          <text class="info-detail{{isLogin ? 2 : 1 }}">{{balance}}</text>元
+        </view>
+        <view class="menber-info">余额·充值
+          <image src="/source/images/icon_btn_next_gray.png" class="vip-info-next-btn"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='orders' wx:if='{{isReady}}'>
+    <view class='orderInfo'>
+      <view style='padding-left:24rpx;'>团单详情</view>
+      <view class='allOrder' bindtap='navigateAllOrder' data-id="0" data-orderstauts="1">
+        <text>查看全部订单</text>
+        <image src='/source/images/icon_btn_next_green.png' style='height:24rpx;width:16rpx;padding-left:16rpx;'></image>
+      </view>
+    </view>
+    <view class='situation' wx:if='{{isReady}}'>
+      <view class="sit-detail{{isLogin ? '1' : '2'}}" bindtap='navigateAllOrder' data-id="1" data-orderstauts="2">
+        <view class='dot' wx:if='{{isLogin && (prePayOrderCount==0 ? false : true)}}'>{{(prePayOrderCount
+          < 10) ? prePayOrderCount : '9+'}}</view>
+            <image class="sit-img{{ isLogin && !(prePayOrderCount==0 ? false : true) ? '2' : '1'}}" src='/source/images/icon_daifukuan.png'></image>
+            <view>待付款</view>
+        </view>
+        <view class="sit-detail{{isLogin ? '1' : '2'}}" bindtap='navigateAllOrder' data-id="2" data-orderstauts="6">
+          <view class='dot' wx:if='{{isLogin && (processGroupCount==0 ? false : true)}}'>{{(processGroupCount
+            < 10) ? processGroupCount : '9+'}}</view>
+              <image class="sit-img{{isLogin && !(processGroupCount==0 ? false : true) ? '2' : '1'}}" src='/source/images/icon_daichengtuan.png'></image>
+              <view>待成团</view>
+          </view>
+          <view class="sit-detail{{isLogin ? '1' : '2'}}" bindtap='navigateAllOrder' data-id="3" data-orderstauts="7">
+            <view class='dot' wx:if='{{isLogin && (preTakeOrderCount==0 ? false : true)}}'>{{(preTakeOrderCount
+              < 10) ? preTakeOrderCount : '9+'}}</view>
+                <image class="sit-img{{isLogin && !(preTakeOrderCount==0 ? false : true) ? '2' : '1'}}" src='/source/images/icon_daiziti.png'></image>
+                <view>待提货</view>
+            </view>
+            <view class="sit-detail1" bindtap='navigateAllOrder' data-id="0" data-orderstauts="1">
+              <image class="sit-img2" src='/source/images/icon_yichengtuan.png'></image>
+              <view>全部</view>
+            </view>
+          </view>
+        </view>
+        <view class='other-tools' wx:if="{{isReady}}">
+          <view class='tool' bindtap='naviagateNearbyStores'> 附近门店
+            <image src='/source/images/icon_arrow2.png' style='height:28rpx;width:20rpx;padding-left:16rpx;'></image>
+          </view>
+          <view class='tool' bindtap='navigateSelfService'>自助服务
+            <image src='/source/images/icon_arrow2.png' style='height:28rpx;width:20rpx;padding-left:16rpx;'></image>
+          </view>
+          <view class='tool' bindtap='navigategiftCard'>我的礼品卡
+            <image src='/source/images/icon_arrow2.png' style='height:28rpx;width:20rpx;padding-left:16rpx;'></image>
+          </view>
+          <view class='tool' bindtap='navigategiftStore'>百果园果礼商城
+            <image src='/source/images/icon_arrow2.png' style='height:28rpx;width:20rpx;padding-left:16rpx;'></image>
+          </view>
+          <!-- <view class='tool' bindtap='navigateToDownload'>下载百果园App
+      <view style='display:flex;flex-direction:row;align-items:center;color: rgb(153,153,153)'>更便捷的购物体验
+        <image src='/source/images/icon_arrow2.png' style='height:28rpx;width:20rpx;padding-left:12rpx;'></image>
+      </view>
+    </view> -->
+        </view>
+      </view>
+
+      <view class="prevent-screen" hidden="{{!prevent}}"></view>

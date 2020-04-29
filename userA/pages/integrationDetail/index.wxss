@@ -1,0 +1,130 @@
+page {
+  background-color: rgb(245, 245, 245);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.integrat {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.integrat-1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 12rpx 24rpx 0 0;
+  font-size: 28rpx;
+}
+
+.integrat-2 {
+  margin-left: 60rpx;
+  text-align: center;
+  font-size: 80rpx;
+}
+
+.integrat-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 24rpx 16rpx;
+  color: rgb(100, 100, 100);
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.info-1 {
+  color: rgb(51, 51, 51);
+  font-size: 32rpx;
+  align-items: center;
+}
+
+.info-2 {
+  margin: 14rpx 0 0 0;
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+}
+
+.p-m1 {
+  color: rgb(248, 138, 11);
+}
+
+.p-m2 {
+  color: #37D260;
+}
+
+.no-integrat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.no-integrat image {
+  margin-top: 174rpx;
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.no-integrat text {
+  font-size: 26rpx;
+  color: rgb(102, 102, 102);
+  margin-top: 18rpx;
+  margin-bottom: 4rpx;
+}
+
+.toGetberry {
+  font-size: 26rpx;
+  color: rgb(87, 107, 149);
+  margin-bottom: 200rpx;
+}
+
+.pagoda {
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.icon-pagoda {
+  width: 104rpx;
+  height: 54rpx;
+}
+
+.f-p {
+  font-size: 24rpx;
+  color: rgb(207, 207, 207);
+  margin-top: 4rpx;
+}
+
+.toGetInte {
+  font-size: 26rpx;
+  color: rgb(87, 107, 149);
+  margin-bottom: 170rpx;
+}
+
+.tips {
+  background-color: rgb(255, 255, 255);
+  padding-left: 24rpx;
+  padding-top: 10rpx;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.tips-1 {
+  color: #37D260;
+  font-size: 26rpx;
+}
+
+.tips-2 {
+  color: rgb(153, 153, 153);
+  font-size: 24rpx;
+  margin-top: 4rpx;
+  padding-bottom: 16rpx;
+}

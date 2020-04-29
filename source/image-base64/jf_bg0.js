@@ -1,0 +1,3 @@
+var bg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAeCAMAAACi2EgRAAAAOVBMVEX///8AAAD///////////////////////////////////////////////////////////////////9ESdXCAAAAE3RSTlOZAHKSGAKDWUcfC39gBmpOOToj78WMcAAAAKZJREFUSMet1UsSwiAQRdHbDQTyj+5/sWKMpUPlcUYZ3ao3SINdYvEh8LMweIl2uSKj08DHr0jKNMrpHZmcZj69IskReDojGUl+RkZEo2GOyI2ILFKQFRyZMyAbCMhCn8jcY86GzNmRFSZkEZP3uGH3Hj+g7Uhyv6Nk0yafxyrt+qGubkF+Mqo4U0mPV7UuXJbV/sTn8whU4TATIuekOZoWqZPqlAYPaygD/lbpclUAAAAASUVORK5CYII=";
+
+module.exports = {bg}

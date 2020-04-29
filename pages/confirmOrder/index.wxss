@@ -1,0 +1,306 @@
+page{
+  min-height: 100%;
+  background: #f5f5f5;
+  font-size: 28rpx; 
+}
+
+.shipping-address{
+  background: #fff;
+  overflow: hidden; 
+}
+
+.address-info{
+  margin: 16rpx 24rpx;
+}
+
+.info-title{
+  font-size: 30rpx;
+  margin-bottom: 6rpx;
+  font-weight: 600;
+}
+
+.info-title .num{
+  margin-left: 24rpx; 
+}
+
+.info-main{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-left{
+  width: 478rpx;
+}
+
+.info-text{
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.info-arrow{
+  margin-left: 16rpx; 
+}
+
+
+.select-address{
+  width: 530rpx;
+  height: 72rpx;
+  line-height: 55rpx;
+  border: 2px dashed #dcdcdc;
+  margin: 32rpx auto;
+  color: #666666;
+  text-align: center;
+}
+
+.sign{
+  font-size: 40rpx;
+  margin-left: 9rpx;
+}
+
+.coupon-text{
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  color: #999;
+  padding-left: 20rpx;
+}
+
+.coupon{
+  padding: 20rpx 24rpx;
+  background: white;
+  position: relative;
+  margin-bottom: 21rpx;
+}
+
+.coupon .img{
+  width: 74rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-right: 21rpx;
+}
+
+.coupon .arrow{
+  position: absolute;
+  right: 24rpx;
+  top:50%;
+  margin-top: -8rpx;
+}
+
+.order-list{
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.delivery-time, .order-bill{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.time{
+  color: #36d15f;
+  position: relative;
+}
+
+.bill{
+  position: relative
+}
+
+.delivery-text, .bill-text{
+  margin-right: 41rpx;
+}
+
+.delivery-arrow, .bill-arrow{
+  vertical-align: text-top;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10rpx;
+}
+
+.order-comment{
+  padding: 24rpx;
+  overflow: hidden;
+}
+
+.comment-text{
+  width: 140rpx;
+  height:1.4rem;
+  line-height:1.4rem;
+}
+
+.forward-sale, .sold-out{
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.forward-hander, .sold-out-hander{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sold-out .order-info{
+  color: #999999;
+}
+
+.forward-hander .hander-txt{
+  color: #ff9f06;
+}
+
+.forward-bill{
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 24rpx;
+  overflow: hidden;
+}
+
+.forward-bill-description{
+  font-size: 24rpx;
+  color: #b9b9b9;
+  margin-left: 40rpx;
+}
+
+
+
+
+
+
+
+
+
+
+.consumer-details{
+  background: #fff;
+  padding: 24rpx;
+  margin-bottom: 206rpx;
+}
+
+.details-item{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.flex-footer{
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+
+.footer-info{
+  padding-left: 24rpx;
+  background: #faeac5;
+  height: 56rpx;
+  line-height: 56rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.footer-confirm{
+  height: 96rpx;
+  line-height: 96rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.total{
+  padding-left: 24rpx;
+  border-top: 1px solid #f5f5f5;
+  width: 50%;
+}
+
+.total .two{
+  color: #ff9f06;
+  font-size: 34rpx;
+  margin-left: 16rpx;
+}
+
+.total .three{
+  color: #ff9f06;
+  font-size: 30rpx;
+}
+
+.confirm-buttom{
+  background: #ffa006;
+  color: #fff;
+  text-align: center;
+  width: 50%;
+}
+
+
+
+
+.float-left{
+ float: left;
+} 
+
+.float-right{
+ float: right;
+} 
+
+.right-arrow{
+  width: 12rpx;
+  height: 22rpx;
+  vertical-align: middle;
+}
+
+.border-bottom::after, .border-top::before{
+  content: '';
+  display: block;
+  height: 4rpx;
+  background: -webkit-repeating-linear-gradient(-34deg,#ffadb0 , #ffadb0 15px ,#fff 15px,#fff 25px, #a8cfff 25px, #a8cfff 40px ,#fff 40px, #fff 50px); 
+}
+
+.order-page-border{
+ border-bottom: 2rpx solid #f5f5f5;
+}
+
+.order-info{
+  padding: 32rpx 24rpx;
+  overflow: hidden;
+  border-bottom: 2rpx solid #f5f5f5;
+  position: relative;
+  font-size: 28rpx;
+}
+
+.order-img{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 24rpx;
+}
+
+.item-title{
+  font-size: 20rpx;
+  margin-top: 10rpx;
+  color: #939393;
+}
+
+.item-sub-title{
+  position: absolute;
+  bottom: 33rpx;
+  font-size: 24rpx;
+  color: #939393;
+}
+
+.item-right{
+  position: relative;
+  clear: both;
+}
+
+
+.item-right .item-money{
+  position: absolute;
+  font-size: 28rpx;
+  bottom: 0;
+  right: 0;
+}
+

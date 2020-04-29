@@ -1,0 +1,2 @@
+<!--pages/h5/intergraRuleInfo/index.wxml-->
+ <web-view src="https://x.pagoda.com.cn/app/intergraRoleInfo.html"></web-view> 

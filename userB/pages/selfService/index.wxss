@@ -1,0 +1,73 @@
+/* pages/user/selfService/index.wxss */
+@import "/pages/template/index";
+Page{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.self-service {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 93.6%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+	padding: 0 34rpx 0 40rpx;
+	margin-bottom: 20rpx;
+	font-size: 30rpx;
+	color: rgb(51, 51, 51);
+}
+
+.service {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 24rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tip-2 {
+    color: #37D260;
+    font-size: 28rpx;
+    margin-bottom: 4rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-txt {
+    margin: 0 12rpx;
+}
+
+.line {
+    width: 70rpx;
+    height: 1rpx;
+    border-bottom: 1rpx solid #37D260;
+}
+
+.dot {
+    background: #37D260;
+    width: 6rpx;
+    height: 6rpx;
+    border-radius: 6rpx;
+}
+.tip-3 {
+    color: rgb(153, 153, 153);
+    font-size: 22rpx;
+}

@@ -1,0 +1,116 @@
+<view class="container">
+  <view class="banner">
+    <view class="{{orderClass == 'A' ? 'tab on' : 'tab'}}" data-status="A" bindtap="bindOrderTap">门店订单</view>
+    <view class="{{orderClass == 'B' ? 'tab on' : 'tab'}}" data-status="B" bindtap="bindOrderTap">App订单</view>
+  </view>
+
+  <!--门店订单-->
+  <view class="{{orderClass == 'A' && storeOrderFlag ? 'store-order-box record-box' : 'store-order-box record-box hidden'}}">
+    <view class="r-item" wx:for="{{storeOrderList}}" wx:key="{{item.orderTicket}}">
+      <view class="item-store">
+        <label class="img-middle"><image class="icon-bill" src="/source/images/icon_bill_small.png"></image></label>
+        <view class="s-name">{{item.orderTicket}}</view>
+        <view class="s-time">{{item.tradeTime}}</view>
+      </view>
+      <view class="item-goods">
+        <view class="g-name">{{item.goodsItem[0].goodsName}}</view>
+        <view class="g-qulty">{{item.goodsItem[0].goodsValue}}{{item.goodsItem[0].goodsSpec}}</view>
+      </view>
+      <navigator class="item-total" hover-class="none" url="/userB/pages/orderDetail/index?orderTicket={{item.orderTicket}}" catchtap="tapOrderInfo">
+        共{{item.goodsItem.length}}件商品 总价：<text class="total">￥{{item.orderActualAmount/100}}</text>
+        <label class="img-middle"><image class="icon-next" src="/source/images/icon_next_black.png"></image></label>
+      </navigator>
+      <view class="{{item.isAllowComplaint == 'Y' && item.isAllowRefund == 'Y' ? 'item-ser lay-end' : 'item-ser lay-end hidden'}}">
+        <view class="owner-btn" bindtap="bindOwnerTap" data-phone="{{item.storePhone}}">联系店家</view>
+        <view class="refund-btn" bindtap="bindRefundTap">不满意瞬间退款</view>
+      </view>
+      <view class="{{item.isAllowComplaint == 'Y' && item.isAllowRefund == 'N' ? 'item-ser lay-between' : 'item-ser lay-between hidden'}}">
+        <view class="no-refund">已超过48小时无法瞬间退款</view>
+        <view class="owner-btn" bindtap="bindOwnerTap" data-phone="{{item.storePhone}}">联系店家</view>
+      </view>
+      <view class="{{item.isAllowComplaint == 'N' ? 'item-ser lay-between' : 'item-ser lay-between hidden'}}">
+        <view class="no-refund">已进行过投诉或退款</view>
+        <view class="owner-btn" bindtap="bindOwnerTap" data-phone="{{item.storePhone}}">联系店家</view>
+      </view>
+    </view>
+    <!--<view class="{{loading ? 'refresh-block' : 'refresh-block hidden'}}">
+      <image class="icon-refresh" animation="{{refreshAnimation}}" src="/source/images/icon_loading.png"></image>
+      <text>加载中...</text>
+    </view>-->
+    <view class="pagoda">
+      <image class="icon-pagoda" src="/source/images/logo_pagoda.png"></image>
+      <view class="f-p">做更好吃的水果</view>
+      <view class="f-p">不好吃App瞬间退款</view>
+    </view>
+  </view>
+
+  <!--app订单-->
+  <view class="{{orderClass == 'B' && appOrderFlag ? 'app-order-box record-box' : 'app-order-box record-box hidden'}}">
+    <view class="r-item" wx:for="{{appOrderList}}" wx:key="{{item.goodsOrderID}}">
+      <view class="item-store" >
+        <label class="img-middle"><image class="icon-serial" src="/source/images/icon_serialnumber.png"></image></label>
+        <view class="s-name">{{item.goodsOrderNum}}</view>
+        <view class="s-time f-c">{{item.showOrderStatus == '1' ? '交易成功' : 
+                      item.showOrderStatus == '2' ? '交易失效' :
+                      item.showOrderStatus == '3' ? '交易取消' :
+                      item.showOrderStatus == '4' ? '待付款' :
+                      item.showOrderStatus == '5' ? '待发货' : '待收货'}}</view>
+      </view>
+      <view class="item-goods app-goods">
+        <scroll-view class="img-box" scroll-x="true" >
+           <image class="icon-fruit" wx:for="{{item.goodsList}}" wx:key="{{item.goodsID}}" src="{{picUrl}}{{item.headPic}}"></image> 
+          </scroll-view>
+      </view>
+      <navigator class="item-total" hover-class="none" url="/userB/pages/orderDetail/index?goodsOrderID={{item.goodsOrderID}}&payStatus={{item.payStatus}}">
+        共{{item.goodsList.length}}件商品 总价：<text class="total">￥{{item.payAmount/100}}</text>
+        <label class="img-middle"><image class="icon-next" src="/source/images/icon_next_black.png"></image></label>
+      </navigator>
+      <view class="{{item.isAllowComplaint == 'Y' && item.isAllowRefund == 'Y' ? 'item-ser lay-end' : 'item-ser lay-end hidden'}}">
+        <view data-phone="{{item.store.storePhone}}" bindtap="bindOwnerTap" class="owner-btn">联系店家</view>
+        <view class="refund-btn" bindtap="bindRefundTap">不满意瞬间退款</view>
+      </view>
+      <view class="{{item.isAllowComplaint == 'Y' && item.isAllowRefund == 'N' ? 'item-ser lay-between' : 'item-ser lay-between hidden'}}">
+        <view class="no-refund">已超过48小时无法瞬间退款</view>
+        <view data-phone="{{item.store.storePhone}}" bindtap="bindOwnerTap" class="owner-btn">联系店家</view>
+      </view>
+      <view class="{{item.isAllowComplaint == 'N' ? 'item-ser lay-between' : 'item-ser lay-between hidden'}}">
+        <view class="no-refund">{{ item.showOrderStatus==2 || item.showOrderStatus==3 || item.showOrderStatus==6 ? '' :'已进行过投诉或退款'}}</view> 
+        <view data-phone="{{item.store.storePhone}}" bindtap="bindOwnerTap" class="owner-btn">联系店家</view>
+      </view>
+    </view>
+    <!--<view class="{{loading ? 'refresh-block' : 'refresh-block hidden'}}">
+      <image class="icon-refresh" animation="{{refreshAnimation}}" src="/source/images/icon_loading.png"></image>
+      <text>正在加载中...</text>
+    </view>-->
+    <view class="pagoda">
+      <image class="icon-pagoda" src="/source/images/logo_pagoda.png"></image>
+      <view class="f-p">做更好吃的水果</view>
+      <view class="f-p">不好吃App瞬间退款</view>
+    </view>
+  </view>
+
+  <!--无门店订单-->
+  <view class="{{orderClass == 'A' && !storeOrderFlag ? 'no-store-order' : 'no-store-order hidden'}}">
+    <image class="icon-noorders" src="/source/images/home_nostoreorders_defaultpag.png"></image>
+    <view class="f-t">马上下单，畅享水果好生活~</view>
+    <view class="{{storeOrderFlag ? 'pagoda hidden' : 'pagoda'}}">
+      <image class="icon-pagoda" src="/source/images/logo_pagoda.png"></image>
+      <view class="f-p">做更好吃的水果</view>
+      <view class="f-p">不好吃App瞬间退款</view>
+  </view>
+  </view>
+
+  <!--无app订单-->
+  <view class="{{orderClass == 'B' && !appOrderFlag ? 'no-app-order' : 'no-app-order hidden'}}">
+    <image class="icon-noorders" src="/source/images/home_noorders_defaultpage.png"></image>
+    <view class="f-t">马上下单，畅享水果好生活~</view>
+    <view class="{{appOrderFlag ? 'pagoda hidden' : 'pagoda'}}">
+      <image class="icon-pagoda" src="/source/images/logo_pagoda.png"></image>
+      <view class="f-p">做更好吃的水果</view>
+      <view class="f-p">不好吃App瞬间退款</view>
+  </view>
+  </view>
+
+  
+  
+</view>
